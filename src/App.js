@@ -16,7 +16,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   // const[error,setError] = useState(null);
-  const url = "https://api.restful-api.dev/objects?search  ";
+  const url = "https://api.restful-api.dev/objects?search ";
 
 
   
