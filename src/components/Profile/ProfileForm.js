@@ -44,11 +44,11 @@ const ProfileForm = () => {
           <div class="text-center p-6  border-b">
             <img
               class="h-24 w-24 rounded-full mx-auto"
-              src={Image.Tharindu}
+              src={localStorage.getItem("profilePic")}
               alt="Randy Robertson"
             />
-            <p class="pt-2 text-lg font-semibold">user name</p>
-            <p class="text-sm text-gray-600">useemail@example.com</p>
+            <p class="pt-2 text-lg font-semibold">{localStorage.getItem("name")}</p>
+            <p class="text-sm text-gray-600">{localStorage.getItem("email")}</p>
             <div class="mt-5">
               <a
                 href="#"
