@@ -51,13 +51,17 @@ export const AuthContextProvider = (props) => {
   const logoutHandler = useCallback(() => {
     setToken(null);
     localStorage.removeItem('token');
-    localStorage.removeItem('expirationTime');
+    localStorage.removeItem('expirationTime'); 
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
+    localStorage.removeItem("profilePic");
 
     if (logoutTimer) {
       clearTimeout(logoutTimer);
     }
   }, []);
 
+  
   const loginHandler = (token, expirationTime) => {
     setToken(token);
     localStorage.setItem('token', token);
@@ -66,6 +70,16 @@ export const AuthContextProvider = (props) => {
     const remainingTime = calculateRemainingTime(expirationTime);
 
     logoutTimer = setTimeout(logoutHandler, remainingTime);
+  };
+
+
+  const signInHandler = (token, name,email,profilePic) => {
+    setToken(token);
+    localStorage.setItem('token', token); 
+    localStorage.setItem("name", name);
+    localStorage.setItem("email", email);
+    localStorage.setItem("profilePic", profilePic); 
+ 
   };
   
   useEffect(() => {
@@ -80,6 +94,7 @@ export const AuthContextProvider = (props) => {
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
     logout: logoutHandler,
+    signIn: signInHandler,
   };
 
   return (
