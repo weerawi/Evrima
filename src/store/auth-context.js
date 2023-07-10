@@ -62,10 +62,12 @@ export const AuthContextProvider = (props) => {
   }, []);
 
   
-  const loginHandler = (token, expirationTime) => {
+  const loginHandler = (token, expirationTime , email ) => {
     setToken(token);
     localStorage.setItem('token', token);
     localStorage.setItem('expirationTime', expirationTime);
+    
+    localStorage.setItem("email", email);
 
     const remainingTime = calculateRemainingTime(expirationTime);
 
@@ -73,10 +75,19 @@ export const AuthContextProvider = (props) => {
   };
 
 
-  const signInHandler = (token, name,email,profilePic) => {
+  const signInGoogleHandler = (token, name,email,profilePic) => {
     setToken(token);
     localStorage.setItem('token', token); 
     localStorage.setItem("name", name);
+    localStorage.setItem("email", email);
+    localStorage.setItem("profilePic", profilePic); 
+ 
+  };
+
+  const signInFacebookHandler = (token, name,email,profilePic) => {
+    setToken(token);
+    localStorage.setItem('accessToken', token); 
+    localStorage.setItem("user", name);
     localStorage.setItem("email", email);
     localStorage.setItem("profilePic", profilePic); 
  
@@ -94,7 +105,8 @@ export const AuthContextProvider = (props) => {
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
     logout: logoutHandler,
-    signIn: signInHandler,
+    signInG: signInGoogleHandler,
+    signInF: signInFacebookHandler,
   };
 
   return (
