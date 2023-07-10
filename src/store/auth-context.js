@@ -82,17 +82,8 @@ export const AuthContextProvider = (props) => {
     localStorage.setItem("email", email);
     localStorage.setItem("profilePic", profilePic); 
  
-  };
+  }; 
 
-  const signInFacebookHandler = (token, name,email,profilePic) => {
-    setToken(token);
-    localStorage.setItem('accessToken', token); 
-    localStorage.setItem("user", name);
-    localStorage.setItem("email", email);
-    localStorage.setItem("profilePic", profilePic); 
- 
-  };
-  
   useEffect(() => {
     if (tokenData) {
       console.log(tokenData.duration);
@@ -105,8 +96,7 @@ export const AuthContextProvider = (props) => {
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
     logout: logoutHandler,
-    signInG: signInGoogleHandler,
-    signInF: signInFacebookHandler,
+    signInG: signInGoogleHandler, 
   };
 
   return (

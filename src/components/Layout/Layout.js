@@ -39,7 +39,7 @@ const Layout = (props) => {
   return (
     <Fragment  >
       <MainNavigation />
-      <main  style={{backgroundColor:'rgba(0, 0, 0, 0.68)'}}>
+      <main  style={{backgroundColor:'rgba(0, 0, 0, 0.6)'}}>
       <style>
       {`
         ::selection {

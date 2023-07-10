@@ -16,7 +16,7 @@ const firebaseConfig = {
  
 
 
-const useSignIn = () => {
+const useSignInGoogle = () => {
   const authCtx = useContext(AuthContext);
   const history = useHistory();
 
@@ -38,37 +38,13 @@ const useSignIn = () => {
       .catch((error) => {
         console.log(error.message);
       });
-  };
+  }; 
 
-
-  const signInWithFacebook = () => {
-    const app = firebase.initializeApp(firebaseConfig);  
-    const auth = app.auth();
-    const provider = new firebase.auth.FacebookAuthProvider(); 
-
-    auth.signInWithPopup(provider)
-      .then((result) => { 
-        const email = result.user.email;
-        const profilePic = result.user.photoURL; 
-        const user = result.user;
-
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        const credential = provider.credentialFromResult(result);
-        const accessToken = credential.accessToken; 
-
- 
-        authCtx.signInG(accessToken, user,email , profilePic);
-        history.replace('/ ');
-      })  
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
-
-  return {signInWithGoogle,signInWithFacebook};
+  
+  return  signInWithGoogle ;
 };
 
-export default useSignIn;
+export default useSignInGoogle;
 
 
 

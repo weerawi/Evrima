@@ -1,6 +1,5 @@
 import { useRef, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
-import {Image} from '../../constants/Images';
+import { useHistory } from 'react-router-dom'; 
 import AuthContext from '../../store/auth-context'; 
 import './profileform.css';
 
