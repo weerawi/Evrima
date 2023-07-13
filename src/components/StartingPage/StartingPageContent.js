@@ -1,6 +1,6 @@
 import Typed from 'react-typed';
 import Card from '../Card/Card';
-import { useState } from 'react'; 
+import { useRef, useState } from 'react'; 
 import AOS from "aos";
 import "aos/dist/aos.css";
 AOS.init();
@@ -10,6 +10,9 @@ AOS.init();
  const StartingPageContent = (props) => {
   const [searchCard, setSearchCard] = useState(false);
   const [selectedName, setSelectedName] = useState(''); 
+  const [isOpen,setIsOpen] = useState(false);
+
+  let searchSugession = useRef();
   
 
   const handleSearch = () => {
@@ -126,3 +129,6 @@ AOS.init();
 };
 
 export default StartingPageContent;
+
+
+ 
