@@ -95,7 +95,7 @@ const Footer = () => {
  
       <div className=" relative">
         <svg 
-          className="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16 text-cyan-900 "
+          className="absolute top-0 w-full h-6 -mt-10 sm:-mt-12 sm:h-16 text-cyan-900 "
           preserveAspectRatio="none"
           viewBox="0 0 1440 54"
         >
@@ -106,18 +106,22 @@ const Footer = () => {
         </svg>
 
         <div className="bg-cyan-900">
-          <div className="max-w-2xl mx-auto text-white py-10">
+          <div className="max-w-2xl mx-auto text-white py-5">
             <div className="text-center">
               <h3 className="text-3xl mb-3"> Let's keep in touch!</h3>
               <p>Unleash the Power of Discovery</p>
-               
-            </div> 
-            <div className="mt-8 flex flex-col md:flex-row md:justify-between items-center text-sm text-gray-200">
-              <p className="order-2 md:order-1 mt-8 md:mt-0"> &copy; Evrima Team 2023</p>
-              <div className="order-1 md:order-2">
+              <div className="order-1 md:order-2 py-2">
                 <span className="px-2">About us</span>
                 <span className="px-2 border-l">Contact us</span>
                 <span className="px-2 border-l">Privacy Policy</span>
+              </div>
+              <p className="order-2 md:order-1 mt-4 md:mt-0 border-t  "> &copy; Evrima Team 2023</p>
+               
+            </div> 
+            <div className="mt-3 flex flex-col md:flex-row md:justify-between items-center text-sm text-gray-200">
+              <p className="order-2 md:order-1 mt-4 md:mt-0"> dmmy1 </p>
+              <div className="order-1 md:order-2">
+                dummy2
               </div>
             </div>
           </div>
