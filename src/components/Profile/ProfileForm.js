@@ -44,7 +44,7 @@ const ProfileForm = () => {
             <img
               class="h-24 w-24 rounded-full mx-auto"
               src={localStorage.getItem("profilePic")}
-              alt="Randy Robertson"
+              alt="profile image"
             />
             <p class="pt-2 text-lg font-semibold">{localStorage.getItem("name")}</p>
             <p class="text-sm text-gray-600">{localStorage.getItem("email")}</p>

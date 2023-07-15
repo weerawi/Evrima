@@ -1,6 +1,6 @@
 import Typed from 'react-typed';
 import Card from '../Card/Card';
-import { useRef, useState } from 'react'; 
+import { useState } from 'react'; 
 import AOS from "aos";
 import "aos/dist/aos.css";
 AOS.init();
@@ -10,9 +10,6 @@ AOS.init();
  const StartingPageContent = (props) => {
   const [searchCard, setSearchCard] = useState(false);
   const [selectedName, setSelectedName] = useState(''); 
-  const [isOpen,setIsOpen] = useState(false);
-
-  let searchSugession = useRef();
   
 
   const handleSearch = () => {
@@ -61,23 +58,26 @@ AOS.init();
       // style={{backgroundColor:'rgba(0, 0, 0, 0.5)'}}
          className="mx-auto w-10/12 lg:w-90   rounded-xl shadow-md px-10 text-center flex-row justify-center items-center   mx-5 bg-trasparent">
          
-          <input
-            className="ml-2 w-10/12 lg:w-90 mr-3 bg-gray-400 rounded-xl my-3 px-4 text-white text-xl md:text-2xl"
-            type="text"
-            value={props.value}
-            onChange={props.change}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                handleSearch();
-              }
-            }}
-          /> 
-        <button
-          onClick={handleSearch}
-          className="bg-gray-100   text-cyan-700 font-bold rounded-xl cursor-pointer my-3 hover:bg-cyan-900 p-2 hover:text-cyan-100"
-        >
-          Search
-        </button>
+         <div className='items-center'>
+
+            <input
+              className="ml-2 w-10/12 lg:w-90 mr-3 bg-gray-400 rounded-xl my-3 px-4 text-white text-xl md:text-2xl"
+              type="text"
+              value={props.value}
+              onChange={props.change}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleSearch();
+                }
+              }}
+            /> 
+          <button
+            onClick={handleSearch}
+            className="bg-gray-100   text-cyan-700 font-bold rounded-xl cursor-pointer my-3 hover:bg-cyan-900 p-2 hover:text-cyan-100"
+          >
+            Search
+          </button>
+         </div>
 
         {/* Filtered Product Cards */}
         <div  data-aos="fade-down" data-aos-duration="400" className="bg-gray-300 rounded-xl  flex flex-col border border-gray-300">
