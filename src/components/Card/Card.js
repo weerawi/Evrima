@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import {  useHistory } from 'react-router-dom';
+import  { useState } from 'react'
 // import "./Card.css";
+
 
 const Card = (props) => {
 
-  let text =
-  "Trip.com is a rapidly-growing global online travel agency. Trip.com is here to help you plan the perfect trip. Whether you're going on holiday, taking a business trip, or looking to set up a corporate travel account, Trip.com is here to help you travel the world with cheap flights, discount hotels, and train tickets.  ";
-const [isReadMore, setIsReadMore] = useState(true);
-const toggleReadMore = () => {
-  setIsReadMore(!isReadMore);
-};
+  const history = useHistory(); 
+
+   const handleButtonClick = () => { 
+    history.push('/product');
+   }
+ 
 
 
   return (
@@ -19,7 +21,7 @@ const toggleReadMore = () => {
       shadow-[5px_5px_rgba(_228,_220,_207,_0.4),_10px_10px_rgba(_228,_220,_207,_0.3),_16px_15px_rgba(_228,_220,_207,_0.2),_20px_20px_rgba(_228,_220,_207,_0.1),_25px_25px_rgba(_228,_220,_207,_0.05)] 
       hover:shadow-[7px_7px_rgba(_228,_220,_207,_0.4),_12px_12px_rgba(_228,_220,_207,_0.3),_17px_17px_rgba(_228,_220,_207,_0.2),_22px_22px_rgba(_228,_220,_207,_0.1),_27px_27px_rgba(_228,_220,_207,_0.05)]
       bg-gray-300 opacity-60 hover:opacity-100 text-white my-2 mx-1 rounded-xl shadow-md p-4
-      hover:scale-105 transition-all duration-300">
+      hover:scale-105 transition-all duration-300" onClick={handleButtonClick}>
         <span className="text-cyan-900  font-medium mr-1">{props.name}</span>
         <img src={props.image} alt="Product" className="w-full h-40 object-cover  my-4 border-2 rounded-xl" />
         <div className="flex justify-between">

@@ -1,8 +1,10 @@
 import Typed from 'react-typed';
 import Card from '../Card/Card';
-import { useState } from 'react'; 
+import { useEffect, useRef, useState } from 'react'; 
 import AOS from "aos";
-import "aos/dist/aos.css";
+import "aos/dist/aos.css"; 
+import { useDisclosure } from '@chakra-ui/react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 AOS.init();
 
  
@@ -10,18 +12,40 @@ AOS.init();
  const StartingPageContent = (props) => {
   const [searchCard, setSearchCard] = useState(false);
   const [selectedName, setSelectedName] = useState(''); 
+  const [isTyping, setIsTyping] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure()
   
 
-  const handleSearch = () => {
+  const history = useHistory(); 
+
+  useEffect(() => {
+    if (isTyping) {
+      onOpen(); // Open the modal when the user starts typing
+    } else {
+      onClose(); // Close the modal when the user stops typing
+    }
+  }, [isTyping, onOpen, onClose]);
+
+  const modalRef = useRef();
+  const handleOnClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      onClose(); // Close the modal when clicking outside
+    }
+  };
+
+  const handleSearch = () => { 
     props.search(props.value);
-    setSearchCard(true);
-    setSelectedName(''); 
+    setSearchCard(true); 
+    setSelectedName('');  
   };
 
   const handleNameClick = (name) => {
     setSelectedName(name);
     props.change({ target: { value: name } }); 
+    onClose();  
   };
+
+  
 
   return (
     <div className={`overflow-hidden h-auto pb-20 flex-row pt-44 items-center   justify-center`}>
@@ -64,10 +88,13 @@ AOS.init();
               className="ml-2 w-10/12 lg:w-90 mr-3 bg-gray-400 rounded-xl my-3 px-4 text-white text-xl md:text-2xl"
               type="text"
               value={props.value}
-              onChange={props.change}
+              onChange={(e) => {
+                props.change(e);
+                setIsTyping(e.target.value.trim().length > 0); // Set isTyping state based on input value
+              }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
-                  handleSearch();
+                  handleSearch(); 
                 }
               }}
             /> 
@@ -79,25 +106,43 @@ AOS.init();
           </button>
          </div>
 
-        {/* Filtered Product Cards */}
-        <div  data-aos="fade-down" data-aos-duration="400" className="bg-gray-300 rounded-xl  flex flex-col border border-gray-300">
-          {props.result
-            .filter((product) => {
-              const searchTerm = typeof props.value === 'string' ? props.value.toLowerCase() : '';
-              const fullName = product.name.toLowerCase();
-              return fullName.includes(searchTerm);
-            })
-            .map((product) => (
-              <div 
-                className={`cursor-pointer hover:text-red-800 text-left my-2 mx-4 ${
-                  product.name === selectedName ? 'text-red-800' : ''
-                }`}
-                key={product.id}
-                onClick={() => handleNameClick(product.name)}
-              >
-                {product.name}
-              </div>
-            ))}
+        {/* Filtered Product Cards search */}
+        
+
+        <div  ref={modalRef} className='relative overflow-x-hidden left-1/2 transform -translate-x-1/2 z-10 '>
+          
+          {/* <SearchingBoxModal props={props} selectedName={selectedName} handleNameClick={handleNameClick} isOpen={isOpen} onClose={onClose} onClickOutside={handleOnClickOutside}/> */}
+        
+        
+          <div data-aos="fade-down" data-aos-duration="400" className="bg-gray-300 rounded-xl flex flex-col border border-gray-300">
+              {props.result
+                .filter((product) => {
+                  const searchTerm = typeof props.value === 'string' ? props.value.toLowerCase() : '';
+                  const fullName = product.name.toLowerCase();
+                  return fullName.includes(searchTerm);
+                })
+                .map((product) => (
+                  <div
+                    className={`cursor-pointer hover:text-red-800 text-left my-2 mx-4 ${
+                      product.name === selectedName ? 'text-red-800' : ''
+                    }`}
+                    key={product.id}
+                    onClick={() => handleNameClick(product.name)}
+                  >
+                    {product.name}
+                  </div>
+                ))}
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         </div>
 
         

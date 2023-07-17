@@ -1,15 +1,15 @@
 import { Switch, Route } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-import Layout from './components/Layout/Layout';
-import UserProfile from './components/Profile/UserProfile';
+import Layout from './components/Layout/Layout'; 
 import AuthPage from './pages/AuthPage';
 import HomePage from './pages/HomePage';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import axios from 'axios'; 
 import AuthContext from './store/auth-context';
-import About from './components/About/About';
-import Contact from './components/Contact/Contact'; 
-import LoadingScreen from './components/LoadingScreen';
+import About from './components/About/About';  
+import ProfilePage from './pages/ProfilePage';
+import ContactPage from './pages/ContactPage';
+import { ProductPage } from './pages/ProductPage';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -88,11 +88,14 @@ function App() {
             {authCtx.isLoggedIn && <About />} 
           </Route>
           <Route path='/profile'>
-            {authCtx.isLoggedIn && <UserProfile />}
+            {authCtx.isLoggedIn && <ProfilePage />}
             {!authCtx.isLoggedIn && <Redirect to='/auth' />}
           </Route>
           <Route path='/contact'>
-            {authCtx.isLoggedIn && <Contact/>} 
+            {authCtx.isLoggedIn && <ContactPage/>} 
+          </Route>
+          <Route path='/product'>
+              <ProductPage/> 
           </Route>
           <Route path='*'>
             <Redirect to='/' />
