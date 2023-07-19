@@ -47,6 +47,7 @@ AOS.init();
 
   
 
+
   return (
     <div className={`overflow-hidden h-auto pb-20 flex-row pt-44 items-center   justify-center`}>
 
@@ -69,7 +70,7 @@ AOS.init();
             <input
               className="ml-2 bg-transparent text-white text-xl md:text-2xl"
               type="text"  
-              
+               disabled 
             />
           </Typed>
           </div>
