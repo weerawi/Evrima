@@ -6,6 +6,14 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+
+    fontFamily:{
+      oswald: "Oswald, sans-serif",
+      handjet: "Handjet, cursive",
+      urbanist: "Urbanist, sans-serif",
+
+    },
+
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
