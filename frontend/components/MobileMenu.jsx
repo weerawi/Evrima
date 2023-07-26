@@ -1,5 +1,7 @@
 import Link from 'next/link';
-import React, { useState } from 'react'
+import React from 'react'
+
+
 
 const data = [
     { id: 1, name: "Home", url: "/" },
@@ -12,13 +14,10 @@ const data = [
 
 
 
-const MobileMenu = ( ) => {
-
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isFixed, setIsFixed] = useState(false);
-
+const MobileMenu = ({setMobileMenu} ) => {
+ 
   return (
-    <ul className="text-black   font-bold   mt-[50px] left-0 w-full  bg-white  "> 
+    <ul className="text-black md:hidden font-bold mt-[50px]  left-0 w-[300px]  bg-white  "> 
     {/* set always hidden and aftet medium size set menu bar visible   */}
 
         {data.map((item) =>{
@@ -30,7 +29,7 @@ const MobileMenu = ( ) => {
 
                         
                         <li className="cursor-pointer">
-                            <Link href={item?.url}>{item.name}</Link>
+                            <Link href={item?.url} onClick={() => setMobileMenu(false)}>{item.name}</Link>
                         </li>
                  
                 </React.Fragment>

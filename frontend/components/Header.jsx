@@ -1,12 +1,11 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Menu from './Menu'
-
-import { BiMenuAltRight } from "react-icons/bi";
-import { VscChromeClose } from "react-icons/vsc";
+import MobileMenu from './MobileMenu';
 
 import Drawer from '@material-ui/core/Drawer';
-import MobileMenu from './MobileMenu';
+import { BiMenuAltRight } from "react-icons/bi";
+import { VscChromeClose } from "react-icons/vsc";
 
 const Header = () => {
 
@@ -65,14 +64,15 @@ const Header = () => {
             // classes={{
             //   paper: classes.drawerPaper, // Use the defined styles for the paper
             // }}
-        >
-            <MobileMenu/>
+          >
  
+            <MobileMenu setMobileMenu={setMobileMenu}/>
+
         </Drawer>
 
         {/* Mobile icon start */}
         <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center
-          items-center hover:bg-cyan-300  cursor-pointer relative -mr-2 "> 
+                items-center bg-red-400 hover:bg-red-900  cursor-pointer relative -mr-2 "> 
             {/*  ///////////////////////////////////////////////
             because of the using medium size to change menu visible , 
             toggle icon also hidden after medium  [  md:hidden ]
@@ -91,7 +91,7 @@ const Header = () => {
               )}
           </div>
           {/* Mobile icon end */}
-
+        
     </div>
   )
 }
