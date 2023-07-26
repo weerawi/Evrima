@@ -3,6 +3,8 @@ import React from "react";
 // import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
 import Wrapper from "./Wrapper";
 
+
+
 const Footer = () => {
     return (
         <footer className="bg-black text-white pt-8 pb-3 relative">

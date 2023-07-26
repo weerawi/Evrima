@@ -1,9 +1,10 @@
 import React from 'react'; 
 import AboutProfile from '@/components/AboutProfile';
-import { Image } from '@/constants/Images';
+import { Image } from '@/constants/Images'; 
 
 const About = () => {
-  return (
+  return ( 
+
     <div  className=" "> 
       <div style={{backgroundColor: 'rgba(139, 172, 170, 0.3)'}}  className="container py-20  mx-auto px-6 md:px-12 xl:px-32">
         <div className="mb-16 text-center">
@@ -20,8 +21,8 @@ const About = () => {
            
         </div>
       </div>
-    </div>
+    </div> 
   );
 };
-// fhgdfchjwjd
+ 
 export default About;
