@@ -1,5 +1,5 @@
 import Typed from 'react-typed';
-import Card from '../Card/Card';
+import Card from './Card/Card';
 import { useEffect, useRef, useState } from 'react'; 
 import AOS from "aos";
 import "aos/dist/aos.css"; 
@@ -151,9 +151,9 @@ AOS.init();
       </div>
 
       {/* Filtered Product Cards */}
-      <div>
+      <div className='px-5'>
           {searchCard && !props.load && (
-            <div  className="grid  lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 my-6">
+            <div  className="grid  lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4  ">
               {props.result
                 .filter((product) => {
                   const searchTerm = typeof props.value === 'string' ? props.value.toLowerCase() : '';
@@ -161,7 +161,7 @@ AOS.init();
                   return fullName.includes(searchTerm);
                 })
                 .map((product) => (
-                  <div data-aos="zoom-in" data-aos-duration="800">
+                  <div  data-aos="zoom-in" data-aos-duration="800">
                      <Card key={product.id} name={product.name} />
                   </div>
                   

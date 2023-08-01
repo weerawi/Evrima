@@ -3,28 +3,8 @@ import { Fragment } from 'react';
 import MainNavigation from './MainNavigation';
 import Footer from './Footer';
 // import BG from "../../assets/bgimage.jpg";
-import BGV from "../../assets/BGVideo3.mp4"
-
-// const Layout = (props) => {
-//   const mainStyle = {
-//     backgroundImage: `url(${BG})`,
-//     backgroundSize: 'cover',
-//     backgroundPosition: 'center',
-//     backgroundRepeat: 'no-repeat', 
-//   };
-
-//   return (
-//     <Fragment  >
-//       <MainNavigation />
-//       <main style={mainStyle}>{props.children}</main>
-//       <Footer />
-//     </Fragment>
-//   );
-// };
-
-// export default Layout;
-
-
+import BGV from "../../assets/BGVideo3.mp4" 
+  
 const Layout = (props) => {
   const videoStyle = {
     position: 'fixed',
@@ -38,7 +18,9 @@ const Layout = (props) => {
   };
   return (
     <Fragment  >
-      <MainNavigation />
+      <MainNavigation /> 
+
+
       <main  style={{backgroundColor:'rgba(0, 0, 0, 0.6)'}}>
       <style>
       {`

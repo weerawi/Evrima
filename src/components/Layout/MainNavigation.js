@@ -2,7 +2,23 @@ import { Link, useHistory } from 'react-router-dom';
 import { useContext } from 'react'; 
 import AuthContext from '../../store/auth-context';
 import React, { useEffect, useState } from 'react';
-import {Image} from "../../constants/Images";
+import {Image} from "../../constants/Images"; 
+import Menu from '../Menu';
+import MobileMenu from '../MobileMenu';
+import { Drawer, makeStyles } from '@material-ui/core';
+import { BiMenuAltRight } from "react-icons/bi";
+import { VscChromeClose } from "react-icons/vsc";
+
+// use for drawer comming left slide
+const useStyles = makeStyles((theme) => ({
+  drawer: {
+    width: 250,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: 250,
+  },
+}));
 
 const MainNavigation = () => {
 
@@ -11,7 +27,9 @@ const MainNavigation = () => {
   const isLoggedIn = authCtx.isLoggedIn;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
+  const classes = useStyles();
 
   const handleLogout = () => {
     authCtx.logout();
@@ -54,43 +72,52 @@ const MainNavigation = () => {
       top: isFixed ? '0' : 'auto', 
       zIndex:100
     }}
-    className=" w-full h-24  flex justify-between items-center">
-      <Link to='/' className='flex px-10'>
-        {/* <div className=" ml-2 text-3xl text-white m-0">Evrima</div> */}
-        <img src={Image.Evrima} className='w-[40px] md:w-[50px]  ' alt='logo' />
-        
-      </Link>
-      <nav>
-        <ul className='m-0 p-0 md:text-lg  text-gray-700 flex items-baseline  font-medium'>
-          
-          {!isLoggedIn  && (
-            <li className={`mx-4 ${!isFixed ? 'hover:text-gray-900': 'hover:text-gray-500 text-gray-300'} font-bold`}>
-              <Link to='/auth'>Login</Link>
-            </li> 
+    className=" w-full h-24  flex  justify-between items-center">
+
+    <Link to='/' className='flex px-10'>
+      {/* <div className=" ml-2 text-3xl text-white m-0">Evrima</div> */}
+      <img src={Image.Evrima} className='w-[40px] md:w-[50px]  ' alt='logo' />
+      
+    </Link>
+
+    <Menu/>
+
+    <Drawer
+      anchor="left" // Set the anchor to the left side
+      open={mobileMenu}
+      onClose={() => setMobileMenu(false)}
+      classes={{
+        paper: classes.drawerPaper, // Use the defined styles for the paper
+      }}>
+        <MobileMenu setMobileMenu={setMobileMenu}/>
+
+    </Drawer>
+  
+
+  
+     {/* Mobile icon start */}
+     <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center
+        items-center hover:bg-black/[0.05] cursor-pointer relative mr-2 "> 
+        {/*  ///////////////////////////////////////////////
+        because of the using medium size to change menu visible , 
+        toggle icon also hidden after medium  [  md:hidden ]
+        ///////////////////////////////////////////////////
+          */}
+          {mobileMenu ? (
+              <VscChromeClose
+                  className="text-[16px]"
+                  onClick={() => setMobileMenu(false)}
+              />
+          ) : (
+              <BiMenuAltRight
+                  className="text-[20px]"
+                  onClick={() => setMobileMenu(true)}
+              />
           )}
-          {isLoggedIn && (
-            <li className={`mx-4 ${!isFixed ? 'hover:text-gray-900': 'hover:text-gray-500 text-gray-300'} font-bold`}>
-              <Link to='/about'>About</Link>
-            </li>
-          )}
-          {isLoggedIn && (
-            <li className={`mx-4 ${!isFixed ? 'hover:text-gray-900': 'hover:text-gray-500 text-gray-300'} font-bold`}>
-              <Link to='/profile'>Profile</Link>
-            </li>
-          )}
-          
-          {isLoggedIn && (
-            <li className={`mx-4 ${!isFixed ? 'hover:text-gray-900': 'hover:text-gray-500 text-gray-300'} font-bold`}>
-              <Link to='/contact'>Contact</Link>
-            </li>
-          )}
-          {isLoggedIn && (
-            <li className='mx-4'>
-              <button className={`bg-transparent ${!isFixed ? 'hover:text-gray-900': 'hover:text-gray-500 text-gray-300'}  font-bold rounded-md cursor-pointer   p-2  `} onClick={handleLogout}>Logout</button>
-            </li>
-          )}  
-        </ul>
-      </nav>
+      </div>
+      {/* Mobile icon end */}
+
+             
     </header>
   );
 };
