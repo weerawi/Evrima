@@ -16,7 +16,7 @@ const MobileMenu = ({setMobileMenu}) => {
   };
 
   return (
-    <div>
+    <div className='mt-12'>
          
       <nav onClick={()=>{  setMobileMenu(false)}  }>
         <ul className='m-0 p-0 md:text-lg  text-gray-700 flex flex-col items-baseline  font-medium'>

@@ -23,8 +23,7 @@ const useStyles = makeStyles((theme) => ({
 const MainNavigation = () => {
 
   const history = useHistory();
-  const authCtx = useContext(AuthContext);
-  const isLoggedIn = authCtx.isLoggedIn;
+  const authCtx = useContext(AuthContext); 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -57,7 +56,9 @@ const MainNavigation = () => {
     };
   }, []);
 
-  
+  const colorStyle = {
+    color:!isScrolled || !isFixed ? ' ' : '  rgba(255, 255, 255, 0.55) ',// Set the color based on isScrolled and isFixed states
+  };
   
 
   return (
@@ -67,7 +68,7 @@ const MainNavigation = () => {
       backdropFilter: 'blur(6px)',
       background: !isScrolled || !isFixed ? 'rgba(139, 172, 170, 0.3)' : 'transparent',
       borderBottom: !isScrolled || !isFixed ? '1px solid rgba(255, 255, 255, 0.65)' : '1px solid rgba(255, 255, 255, 0.25) ',
-      color:!isScrolled || !isFixed ? ' ' : '  rgba(255, 255, 255, 0.55) ',
+      
       position: isFixed ? 'fixed' : 'relative',
       top: isFixed ? '0' : 'auto', 
       zIndex:100
@@ -80,7 +81,7 @@ const MainNavigation = () => {
       
     </Link>
 
-    <Menu/>
+    <Menu color={colorStyle}/>
 
     <Drawer
       anchor="left" // Set the anchor to the left side
@@ -94,10 +95,10 @@ const MainNavigation = () => {
     </Drawer>
   
 
-  
+
      {/* Mobile icon start */}
      <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center
-        items-center hover:bg-black/[0.05] cursor-pointer relative mr-2 "> 
+        items-center bg-red-100 hover:bg-black/[0.05] cursor-pointer relative mr-2 "> 
         {/*  ///////////////////////////////////////////////
         because of the using medium size to change menu visible , 
         toggle icon also hidden after medium  [  md:hidden ]
