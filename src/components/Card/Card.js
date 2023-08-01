@@ -1,5 +1,6 @@
 import {  useHistory } from 'react-router-dom';
 import  { useState } from 'react'
+import { Link } from '@chakra-ui/react';
 // import "./Card.css";
 
 
@@ -8,14 +9,14 @@ const Card = (props) => {
   const history = useHistory(); 
 
    const handleButtonClick = () => { 
-    history.push('/product');
-   }
+    history.push(`/product/${props.id}`, { name: props.name, image: props.image, price: props.price, views: props.views });
+  };
  
 
 
   return (
 
-    <div className=" my-6  ml-12 mr-12 ">
+    <Link className=" my-6  ml-12 mr-12 ">
 
       <div className="cursor-pointer 
       shadow-[5px_5px_rgba(_228,_220,_207,_0.4),_10px_10px_rgba(_228,_220,_207,_0.3),_16px_15px_rgba(_228,_220,_207,_0.2),_20px_20px_rgba(_228,_220,_207,_0.1),_25px_25px_rgba(_228,_220,_207,_0.05)] 
@@ -56,7 +57,7 @@ const Card = (props) => {
 
 
 
-    </div>
+    </Link>
  
 
   )

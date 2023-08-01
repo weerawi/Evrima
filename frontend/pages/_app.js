@@ -46,7 +46,7 @@ export default function App({ Component, pageProps }) {
       </Head>
 
       <Header/>
-      <main   style={{backgroundColor:'rgba(0, 0, 0, 0.6)'}}>
+      <main   style={{backgroundColor:'rgba(0, 0, 0, 0.4)'}}>
       <style>
         {`
           ::selection {
@@ -55,6 +55,12 @@ export default function App({ Component, pageProps }) {
           }
         `}
       </style>
+
+        <video style={videoStyle} autoPlay muted loop>
+          <source src="BGVideo3.mp4" type="video/mp4" />
+          {/* Add more <source> tags for other video formats if needed */}
+          Your browser does not support the video tag.
+        </video>
        
         <Component {...pageProps} />
 

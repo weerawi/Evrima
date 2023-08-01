@@ -94,9 +94,10 @@ function App() {
           <Route path='/contact'>
             {authCtx.isLoggedIn && <ContactPage/>} 
           </Route>
-          <Route path='/product'>
-              <ProductPage/> 
+          <Route path='/product/:productId'>
+            <ProductPage />
           </Route>
+          
           <Route path='*'>
             <Redirect to='/' />
           </Route>
