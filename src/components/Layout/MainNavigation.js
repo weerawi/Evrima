@@ -2,6 +2,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useContext } from 'react'; 
 import AuthContext from '../../store/auth-context';
 import React, { useEffect, useState } from 'react';
+import {Image} from "../../constants/Images";
 
 const MainNavigation = () => {
 
@@ -54,8 +55,10 @@ const MainNavigation = () => {
       zIndex:100
     }}
     className=" w-full h-24  flex justify-between items-center">
-      <Link to='/'>
-        <div className=" ml-2 text-3xl text-white m-0">Evrima</div>
+      <Link to='/' className='flex px-10'>
+        {/* <div className=" ml-2 text-3xl text-white m-0">Evrima</div> */}
+        <img src={Image.Evrima} className='w-[40px] md:w-[50px]  ' alt='logo' />
+        
       </Link>
       <nav>
         <ul className='m-0 p-0 md:text-lg  text-gray-700 flex items-baseline  font-medium'>
