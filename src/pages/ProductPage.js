@@ -1,5 +1,9 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom';
+import "./productPage.css";
+ 
+
+
 
 export const ProductPage = ( ) => {
 
@@ -8,44 +12,134 @@ export const ProductPage = ( ) => {
 
   return (
     <div className='h-[100vh]  '>
-      
-      <div className=" py-12 w-[50%] justify-center items-center flex ml-12 mr-12 ">
 
-        <div className="cursor-pointer 
-        shadow-[5px_5px_rgba(_228,_220,_207,_0.4),_10px_10px_rgba(_228,_220,_207,_0.3),_16px_15px_rgba(_228,_220,_207,_0.2),_20px_20px_rgba(_228,_220,_207,_0.1),_25px_25px_rgba(_228,_220,_207,_0.05)] 
-        hover:shadow-[7px_7px_rgba(_228,_220,_207,_0.4),_12px_12px_rgba(_228,_220,_207,_0.3),_17px_17px_rgba(_228,_220,_207,_0.2),_22px_22px_rgba(_228,_220,_207,_0.1),_27px_27px_rgba(_228,_220,_207,_0.05)]
-        bg-gray-300 opacity-60 hover:opacity-100 text-white my-2 mx-1 rounded-xl shadow-md p-4
-        hover:scale-105 transition-all duration-300"  >
-          <span className="text-cyan-900  font-medium mr-1">{name}</span>
-          <img src={image} alt="Product" className="w-full h-40 object-cover  my-4 border-2 rounded-xl" />
-          <div className="flex justify-between">
-            <div className="flex items-center">
-              <span className="text-cyan-900 font-medium mr-1">{name}</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-yellow-500"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 2a1 1 0 011 1v4.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 7.586V3a1 1 0 011-1zm-1 14a1 1 0 100-2 1 1 0 000 2zm9-6a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 010-2h2V11h-2a1 1 0 010-2h3a1 1 0 011 1z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-            <span className="text-gray-600">{views} views</span>
-          </div>
-          <div className="flex items-center justify-between mt-4">
-            <span className="text-lg font-semibold">${price} price</span>
-            <button className="bg-cyan-700 hover:bg-cyan-800 text-white px-4 py-2 rounded-lg">
-              More
-            </button>
-          </div>
-          {/* <div>{id}</div>
-          <div>{name}</div> */}
-        </div> 
-      </div>
+
+<div className='w-full text-black md:py-20'>
+            
+                <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px] mt-12">
+                    {/* PRODUCT LEFT SIDE IMAGE CAROUSAL */}
+                    <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0">
+
+
+                      <img src={image} alt="Product" className="w-auto h-80 object-cover  my-4 border-2 rounded-xl" />
+
+                      {/* <div className="productCard">
+
+                        <div class="flex items-center px-5 py-5" >
+                            <div class="card p-0">
+                                <div class="card-image"> 
+
+                                      
+                                        <img src={image} alt="Product" className="w-full h-40 object-cover  my-4 border-2 rounded-xl" />
+                                </div>
+                                <div class="card-content d-flex flex-column align-items-center">
+                                    <h4 class="pt-2">{name}</h4> 
+                                    <h2>$ {price}</h2>
+
+
+
+                                
+                                  
+                                    {price && (
+                                      <div className="flex justify-between px-5">
+                                          <p className="text-base align-items-center font-medium line-through">
+                                              ${price}
+                                          </p>
+                                          
+                                            <p className="ml-auto text-base font-medium align-items-center text-green-500">
+                                                off
+                                            </p>
+                                          
+                                      </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                      </div> */}
+                        
+                    </div>
+
+                    {/* PRODUCT RIGHT SIDE DETAILS */}
+                    <div className=" flex-[1] py-3 md:px-0 px-4 sm:px-24 overflow-y-auto">
+                        <div className="text-xl md:text-2xl font-bold mb-2 leading-tight">
+                            {name}
+                        </div>
+
+                        {/* PRODUCT SUBTITLE */}
+                        <div className="text-base md:text-lg font-semibold mb-5">
+                            subtitle
+                        </div>
+
+                        {/* PRODUCT PRICE */}
+                        <div className="flex items-center">
+                            <p className="mr-2 md:text-xl text-lg font-bold">
+                                ${price}
+                            </p>
+                            (
+                                <div className="flex gap-3 px-12 md:text-base text-sm">
+                                    <p className="align-items-center font-medium line-through">
+                                        ${price}
+                                    </p>
+                                    <p className="ml-auto font-medium align-items-center text-green-500">
+                                        price% off
+                                    </p>
+                                </div>
+                            )
+                        </div>
+
+                        <div className="text-md font-medium text-black/[0.5]">
+                            incl. of taxes
+                        </div>
+                        <div className="text-md font-medium text-black/[0.5] mb-20">
+                            
+                        </div>
+
+                        {/* PRODUCT SIZE RANGE START */}
+                        <div className="mb-10">
+                            <div className="flex justify-between mb-2">
+                                <div className="text-md font-semibold">
+                                    Select Size
+                                </div>
+                                <div className="text-md font-medium text-black/[0.5] cursor-pointer">
+                                    Select Guide
+                                </div>
+                            </div>
+
+                            <div id="sizeGrid" className="grid grid-cols-3 gap-2">
+                                size
+                            </div>
+
+                            <div className="text-red-600 mt-1">
+                                Size selection is required
+                            </div>
+
+                            <button
+                                className="mt-5 w-full py-4 rounded-full bg-cyan-950 text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
+                                
+                            >
+                                Add to Cart
+                            </button>
+
+                            <button className="w-full py-4 rounded-full border border-black text-lg font-medium transition-transform active:scale-95 flex items-center justify-center gap-2 hover:opacity-75 mb-10">
+                                Whishlist
+                            </button>
+
+                            <div>
+                                <div className="text-lg font-bold mb-5">
+                                    Product Details
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+          
+        </div>
+      
+
+
+
+      
   </div>
   )
 }
