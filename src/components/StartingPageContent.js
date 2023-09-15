@@ -18,6 +18,7 @@ AOS.init();
 
   const history = useHistory(); 
 
+  // reference create to scroll to the result cards
   const resultCardsRef = useRef(null);
 
 
@@ -31,6 +32,7 @@ AOS.init();
   }, [isTyping, onOpen, onClose]);
 
   const modalRef = useRef();
+  
   const handleOnClickOutside = (event) => {
     if (modalRef.current && !modalRef.current.contains(event.target)) {
       onClose(); // Close the modal when clicking outside
@@ -156,7 +158,7 @@ AOS.init();
       {/* Filtered Product Cards */}
       <div className='px-5' ref={resultCardsRef}>
           {searchCard && !props.load && (
-            <div  className="grid  lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4  ">
+            <div  className="grid  lg:grid-cols-3 md:grid-cols-2 grid-cols-1  ">
               {props.result
                 .filter((product) => {
                   const searchTerm = typeof props.value === 'string' ? props.value.toLowerCase() : '';

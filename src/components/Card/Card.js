@@ -18,7 +18,7 @@ const Card = (props) => {
 
     <Link className=" my-6  ml-12 mr-12 ">
 
-      <div className="cursor-pointer 
+      {/* <div className="cursor-pointer 
       shadow-[5px_5px_rgba(_228,_220,_207,_0.4),_10px_10px_rgba(_228,_220,_207,_0.3),_16px_15px_rgba(_228,_220,_207,_0.2),_20px_20px_rgba(_228,_220,_207,_0.1),_25px_25px_rgba(_228,_220,_207,_0.05)] 
       hover:shadow-[7px_7px_rgba(_228,_220,_207,_0.4),_12px_12px_rgba(_228,_220,_207,_0.3),_17px_17px_rgba(_228,_220,_207,_0.2),_22px_22px_rgba(_228,_220,_207,_0.1),_27px_27px_rgba(_228,_220,_207,_0.05)]
       bg-gray-300 opacity-60 hover:opacity-100 text-white my-2 mx-1 rounded-xl shadow-md p-4
@@ -49,11 +49,49 @@ const Card = (props) => {
             More
           </button>
         </div>
-        {/* <div>{props.id}</div>
-        <div>{props.name}</div> */}
-      </div>
+      </div> */}
 
  
+      <div className="flex justify-center items-center h-full" onClick={handleButtonClick}>
+
+        <div className="productCard  " >
+
+            <div class="flex items-center px-5 py-5" >
+                <div class="card p-0">
+                    <div class="card-image">
+                        {/* <img src="/girl-blouse-design.jpg" /> */}
+
+                          
+                            <img src={props.image} alt="Product" className="w-full h-40 object-cover  my-4 border-2 rounded-xl" />
+                    </div>
+                    <div class="card-content d-flex flex-column align-items-center">
+                        <h4 class="pt-2">{props.name}</h4> 
+                        <h2>$ {props.price}</h2>
+
+
+
+                    {/* //////////  if any discount has this part will be visible otherwise not ////////// */}
+                      
+                        {props.price && (
+                          <div className="flex justify-between px-5">
+                              <p className="text-base align-items-center font-medium line-through">
+                                  ${props.price}
+                              </p>
+                              
+                                <p className="ml-auto text-base font-medium align-items-center text-green-500">
+                                    off
+                                </p>
+                              
+                          </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      </div>
+
+      
 
 
 
