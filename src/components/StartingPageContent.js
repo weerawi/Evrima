@@ -18,6 +18,10 @@ AOS.init();
 
   const history = useHistory(); 
 
+  const resultCardsRef = useRef(null);
+
+
+
   useEffect(() => {
     if (isTyping) {
       onOpen(); // Open the modal when the user starts typing
@@ -37,6 +41,14 @@ AOS.init();
     props.search(props.value);
     setSearchCard(true); 
     setSelectedName('');  
+
+
+    // Scroll to the result cards
+    resultCardsRef.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+  });
+
   };
 
   const handleNameClick = (name) => {
@@ -107,7 +119,7 @@ AOS.init();
           </button>
          </div>
 
-        {/* Filtered Product Cards search */}
+        {/* Filtered Product Cards search Bar */}
         
 
         <div  ref={modalRef} className='relative overflow-x-hidden left-1/2 transform -translate-x-1/2 z-10 '>
@@ -134,16 +146,7 @@ AOS.init();
                   </div>
                 ))}
             </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+         
         </div>
 
         
@@ -151,7 +154,7 @@ AOS.init();
       </div>
 
       {/* Filtered Product Cards */}
-      <div className='px-5'>
+      <div className='px-5' ref={resultCardsRef}>
           {searchCard && !props.load && (
             <div  className="grid  lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4  ">
               {props.result

@@ -5,7 +5,7 @@ import AboutProfile from './AboutProfile';
 const About = () => {
   return (
     <div className='w-full'  > 
-      <div style={{backgroundColor: 'rgba(139, 172, 170, 0.3)'}}  className=" py-20  mx-auto px-6 md:px-12 xl:px-32">
+      <div  className=" py-20  mx-auto px-6 md:px-12 xl:px-32">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-center text-gray-200 text-2xl   font-bold md:text-4xl">Our Team</h2>
           <p className="text-gray-300 font-medium lg:w-8/12 lg:mx-auto">Meet our exceptional team, driving innovation and excellence.</p>
