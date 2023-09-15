@@ -1,6 +1,4 @@
-import { Link, useHistory } from 'react-router-dom';
-import { useContext } from 'react'; 
-import AuthContext from '../../store/auth-context';
+import { Link } from 'react-router-dom'; 
 import React, { useEffect, useState } from 'react';
 import {Image} from "../../constants/Images"; 
 import Menu from '../Menu';
@@ -22,19 +20,14 @@ const useStyles = makeStyles((theme) => ({
 
 const MainNavigation = () => {
 
-  const history = useHistory();
-  const authCtx = useContext(AuthContext); 
+ 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const classes = useStyles();
 
-  const handleLogout = () => {
-    authCtx.logout();
-    history.replace('/auth'); // Redirect to the login page after logout
-  };
-
+   
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,9 +64,10 @@ const MainNavigation = () => {
       
       position: isFixed ? 'fixed' : 'relative',
       top: isFixed ? '0' : 'auto', 
+      height: '4.5rem',
       zIndex:100
     }}
-    className=" w-full h-24  flex  justify-between items-center">
+    className="   w-full flex  justify-between items-center">
 
     <Link to='/' className='flex px-10'>
       {/* <div className=" ml-2 text-3xl text-white m-0">Evrima</div> */}
