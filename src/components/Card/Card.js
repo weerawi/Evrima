@@ -16,7 +16,7 @@ const Card = (props) => {
 
   return (
 
-    <Link className=" my-6  ml-12 mr-12  ">
+    <div className=" my-6  ml-12 mr-12  ">
 
       {/* <div className="cursor-pointer 
       shadow-[5px_5px_rgba(_228,_220,_207,_0.4),_10px_10px_rgba(_228,_220,_207,_0.3),_16px_15px_rgba(_228,_220,_207,_0.2),_20px_20px_rgba(_228,_220,_207,_0.1),_25px_25px_rgba(_228,_220,_207,_0.05)] 
@@ -52,9 +52,9 @@ const Card = (props) => {
       </div> */}
 
  
-      <div className="flex justify-center items-center h-full  " onClick={handleButtonClick}>
+      <div className="flex justify-center items-center h-full  ">
 
-        <div className="productCard  " >
+        <div className="productCard  "  onClick={handleButtonClick}>
 
             <div class="flex items-center px-5 py-5" >
                 <div class="card p-0">
@@ -95,7 +95,7 @@ const Card = (props) => {
 
 
 
-    </Link>
+    </div>
  
 
   )
