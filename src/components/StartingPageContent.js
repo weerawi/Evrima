@@ -156,7 +156,7 @@ AOS.init();
       </div>
 
       {/* Filtered Product Cards */}
-      <div className='px-5' ref={resultCardsRef}>
+      <div className='px-5' ref={resultCardsRef}  >
           {searchCard && !props.load && (
             <div  className="grid  lg:grid-cols-3 md:grid-cols-2 grid-cols-1  ">
               {props.result
@@ -166,7 +166,7 @@ AOS.init();
                   return fullName.includes(searchTerm);
                 })
                 .map((product) => (
-                  <div  data-aos="zoom-in" data-aos-duration="800">
+                  <div  data-aos="zoom-in " data-aos-duration="800">
                      <Card key={product.id} name={product.name} />
                   </div>
                   

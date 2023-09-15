@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext  } from 'react'
 import AuthContext from '../store/auth-context';
 import { Link, useHistory } from 'react-router-dom';
 
@@ -6,8 +6,7 @@ const Menu = ({color}) => {
 
    const history = useHistory();
   const authCtx = useContext(AuthContext);
-  const isLoggedIn = authCtx.isLoggedIn; 
-  const [isFixed, setIsFixed] = useState(false);
+  const isLoggedIn = authCtx.isLoggedIn;  
 
 
   const handleLogout = () => {

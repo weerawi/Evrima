@@ -16,7 +16,7 @@ const Card = (props) => {
 
   return (
 
-    <Link className=" my-6  ml-12 mr-12 ">
+    <Link className=" my-6  ml-12 mr-12  ">
 
       {/* <div className="cursor-pointer 
       shadow-[5px_5px_rgba(_228,_220,_207,_0.4),_10px_10px_rgba(_228,_220,_207,_0.3),_16px_15px_rgba(_228,_220,_207,_0.2),_20px_20px_rgba(_228,_220,_207,_0.1),_25px_25px_rgba(_228,_220,_207,_0.05)] 
@@ -52,7 +52,7 @@ const Card = (props) => {
       </div> */}
 
  
-      <div className="flex justify-center items-center h-full" onClick={handleButtonClick}>
+      <div className="flex justify-center items-center h-full  " onClick={handleButtonClick}>
 
         <div className="productCard  " >
 
@@ -62,7 +62,7 @@ const Card = (props) => {
                         {/* <img src="/girl-blouse-design.jpg" /> */}
 
                           
-                            <img src={props.image} alt="Product" className="w-full h-40 object-cover  my-4 border-2 rounded-xl" />
+                            <img src={props.image} alt="Product" className="w-full h-40 object-cover  my-4  rounded-xl " />
                     </div>
                     <div class="card-content d-flex flex-column align-items-center">
                         <h4 class="pt-2">{props.name}</h4> 
