@@ -3,7 +3,8 @@ import { useState, useRef, useContext } from 'react';
 import { useHistory } from 'react-router-dom'; 
 import AuthContext from '../../store/auth-context';   
 import useSignInGoogle from '../../store/firebaseConfig';
-
+import {Image} from "../../constants/Images";
+import "./Auth.css"
 
 const AuthForm = () => {
   const history = useHistory();
@@ -83,9 +84,25 @@ const AuthForm = () => {
 
   return (
 
-    <div className="flex  items-center justify-center h-auto pb-24 pt-12">
-      <div style={{background :  'rgba(139, 172, 170, 0.5)' } } className={" mx-auto  w-11/12 max-w-[25rem] rounded-md   shadow-md p-10 text-center"}>
-        <h1 class="text-center text-gray-800 font-bold text-2xl">{isLogin ? 'Login' : 'Sign Up'}</h1>
+    <div className="flex realtive items-center justify-center h-auto pb-24 pt-12">
+
+        <div className='  absolute items-center lg:block'>
+            <div className='h-[35rem] w-[23rem] relative items-center justify-center'> 
+            
+              <img   className='h-[35.5rem] w-[23.5rem] left' src={Image.Login}></img> 
+              <div className='mobileWallpaper h-[33.7rem] w-[20.5rem] absolute top-4 left-5'></div>
+
+            </div> 
+        </div>
+
+
+
+
+
+      <div 
+      // style={{background :  'rgba(139, 172, 170, 0.5)' } }
+       className={"z-10 mx-auto  w-11/12 max-w-[25rem] rounded-md   shadow-md p-10 text-center"}>
+        <h1 class="text-center text-gray-100 font-bold text-2xl">{isLogin ? 'Login' : 'Sign Up'}</h1>
         <form  onSubmit={submitHandler}>
           
         {isLogin &&
@@ -132,6 +149,26 @@ const AuthForm = () => {
           </div>
           )}
 
+
+          {!isLogin ? (
+
+            <div>
+
+              <div className=" mb-2">
+                <label className='block text-gray-200 font-bold mb-2' htmlFor='username'>Username</label>
+                <input className='w-full font-inherit bg-[#ccc] text-[#070A52] rounded-md border border-white p-1'type='username' id='username' />
+              </div>
+
+              <div className=" mb-2">
+                <label className='block text-gray-200 font-bold mb-2' htmlFor='name'>Name</label>
+                <input className='w-full font-inherit bg-[#ccc] text-[#070A52] rounded-md border border-white p-1'type='name' id='name' />
+              </div>
+
+            </div>
+            
+
+          ) : ""}
+
           <div className=" mb-2">
             <label className='block text-gray-200 font-bold mb-2' htmlFor='email'>Your Email</label>
             <input className='w-full font-inherit bg-[#ccc] text-[#070A52] rounded-md border border-white p-1'type='email' id='email' required ref={emailInputRef}  />
@@ -151,7 +188,7 @@ const AuthForm = () => {
             {isLoading && <p>Sending request...</p>}
             <button
               type='button'
-              className="  mt-4 bg-transparent text-[#ED2B2A] border-none py-1 px-6 hover:text-[#820000]"
+              className="  mt-4 bg-transparent text-gray-100 border-none py-1 px-6 hover:text-gray-200"
               onClick={switchAuthModeHandler}
             >
               {isLogin ? 'Create new account' : 'Login with existing account'}
