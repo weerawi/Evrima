@@ -1,0 +1,26 @@
+.mobileWallpaper{
+    background-image: url("https://images.pexels.com/photos/5556319/pexels-photo-5556319.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    animation: changeBg 8s infinite;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    background-size: cover; 
+    background-attachment: fixed;  
+	transform: rotateY(180deg); 
+	padding-top: 10px; 
+    background-repeat: no-repeat;  
+}
+
+@keyframes changeBg {
+    0%{
+        background-image: url("https://images.pexels.com/photos/7620697/pexels-photo-7620697.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    }
+    25%{
+        background-image: url("https://images.pexels.com/photos/3123833/pexels-photo-3123833.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    }
+    50%{
+        background-image: url("https://images.pexels.com/photos/5556277/pexels-photo-5556277.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    }
+    75%{
+        background-image: url("https://images.pexels.com/photos/7778873/pexels-photo-7778873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    }
+}
