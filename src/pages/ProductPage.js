@@ -1,145 +1,110 @@
+import { Button } from '@chakra-ui/react';
 import React from 'react'
 import { useLocation } from 'react-router-dom';
-import "./productPage.css";
+// import "./productPage.css";
  
 
 
-
+ 
 export const ProductPage = ( ) => {
 
-  const location = useLocation();
-  const { name, image, price, views } = location.state || {};
+    const location = useLocation();
+    const { product } = location.state || {};
+    
+    if (!product) {
+      return null; // Handle the case where product details are not available yet
+    }
+//   const { name, image, price, views } = location.state || {};
 
   return (
-    <div className='h-[100vh]  '>
+    <div className='  h-[150vh] md:h-[100vh]    py-5 md:pb-1 pb-10 '>
 
 
-<div className='w-full text-black md:py-20'>
+        <div className='w-full   text-gray-800 '>
             
                 <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px] mt-12">
                     {/* PRODUCT LEFT SIDE IMAGE CAROUSAL */}
-                    <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0">
-
-
-                      <img src={image} alt="Product" className="w-auto h-80 object-cover  my-4 border-2 rounded-xl" />
-
-                      {/* <div className="productCard">
-
-                        <div class="flex items-center px-5 py-5" >
-                            <div class="card p-0">
-                                <div class="card-image"> 
-
-                                      
-                                        <img src={image} alt="Product" className="w-full h-40 object-cover  my-4 border-2 rounded-xl" />
-                                </div>
-                                <div class="card-content d-flex flex-column align-items-center">
-                                    <h4 class="pt-2">{name}</h4> 
-                                    <h2>$ {price}</h2>
-
-
-
-                                
-                                  
-                                    {price && (
-                                      <div className="flex justify-between px-5">
-                                          <p className="text-base align-items-center font-medium line-through">
-                                              ${price}
-                                          </p>
-                                          
-                                            <p className="ml-auto text-base font-medium align-items-center text-green-500">
-                                                off
-                                            </p>
-                                          
-                                      </div>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                      </div> */}
+                    <div 
+                         className="  items-center justify-center w-full md:w-auto flex md:flex-[.7] max-w-[700px] lg:max-w-full mx-auto lg:mx-0 ">
+ 
+                                    {/*  {image}   */}
+                      <img style={{
                         
+                        backdropFilter: 'blur(25px)', 
+                        background:  'rgba(139, 172, 170, 0.5)',
+                        border :  '1px solid rgba(255, 255, 255, 0.45) ',   
+                        backgroundSize: 'cover', 
+                        }}
+                         src={product.image_url} alt="Product" className="p-5 shadow-md shadow-white w-auto h-100 object-cover  my-4 border-2 rounded-xl" />
+   
                     </div>
 
                     {/* PRODUCT RIGHT SIDE DETAILS */}
-                    <div className=" flex-[1] py-3 md:px-0 px-4 sm:px-24 overflow-y-auto">
-                        <div className="text-xl md:text-2xl font-bold mb-2 leading-tight">
-                            {name}
-                        </div>
+                    <div style={{
+                        
+                        backdropFilter: 'blur(25px)',
+                        // background: `url(https://m.media-amazon.com/images/I/51dp6BGML8L._SL1280_.jpg)`,
+                        background:  'rgba(139, 172, 170, 0.5)',
+                        border :  '1px solid rgba(255, 255, 255, 0.45) ',   
+                        backgroundSize: 'cover',
+                        
+                        }}  
+                        className=" mx-5 flex-[.8]  md:px-0 px-4 sm:px-24 overflow-y-auto rounded-2xl my-auto py-10 shadow-md shadow-white">
 
-                        {/* PRODUCT SUBTITLE */}
-                        <div className="text-base md:text-lg font-semibold mb-5">
-                            subtitle
-                        </div>
+                        <div className='flex flex-col '>
+                            <div className="flex justify-center  text-xl md:text-2xl font-bold mb-2 leading-tight">
+                                {product.title}
+                            </div>
 
-                        {/* PRODUCT PRICE */}
-                        <div className="flex items-center">
-                            <p className="mr-2 md:text-xl text-lg font-bold">
-                                ${price}
-                            </p>
-                            (
-                                <div className="flex gap-3 px-12 md:text-base text-sm">
-                                    <p className="align-items-center font-medium line-through">
-                                        ${price}
-                                    </p>
-                                    <p className="ml-auto font-medium align-items-center text-green-500">
-                                        price% off
-                                    </p>
+
+                            {/* PRODUCT RETRIEVW DETAILS */}
+                            <div className="my-5 px-10 md:px-20 lg:px-28 xl:px-36 flex  justify-between ">
+                                <div>
+                                     {product.rank}
                                 </div>
-                            )
-                        </div>
 
-                        <div className="text-md font-medium text-black/[0.5]">
-                            incl. of taxes
-                        </div>
-                        <div className="text-md font-medium text-black/[0.5] mb-20">
-                            
-                        </div>
-
-                        {/* PRODUCT SIZE RANGE START */}
-                        <div className="mb-10">
-                            <div className="flex justify-between mb-2">
-                                <div className="text-md font-semibold">
-                                    Select Size
-                                </div>
-                                <div className="text-md font-medium text-black/[0.5] cursor-pointer">
-                                    Select Guide
+                                <div>
+                                    {product.category}
                                 </div>
                             </div>
 
-                            <div id="sizeGrid" className="grid grid-cols-3 gap-2">
-                                size
+                            {/* PRODUCT PRICE */}
+                            <div className=" flex justify-center  text-base md:text-lg font-semibold mb-5">
+                                {product.price}
                             </div>
 
-                            <div className="text-red-600 mt-1">
-                                Size selection is required
-                            </div>
 
-                            <button
-                                className="mt-5 w-full py-4 rounded-full bg-cyan-950 text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
-                                
-                            >
-                                Add to Cart
-                            </button>
-
-                            <button className="w-full py-4 rounded-full border border-black text-lg font-medium transition-transform active:scale-95 flex items-center justify-center gap-2 hover:opacity-75 mb-10">
-                                Whishlist
-                            </button>
-
-                            <div>
-                                <div className="text-lg font-bold mb-5">
-                                    Product Details
+                            {/* PRODUCT RATINGS */}
+                            <div className="my-5 px-10 md:px-20 lg:px-28 xl:px-36 flex  justify-between ">
+                                <div>
+                                     {product.rating}
                                 </div>
-                                
+
+                                <div>
+                                    {product.reviews}
+                                </div>
                             </div>
+
+                             
+
+
+                            <div className=" flex justify-center ">
+                                <Button className=' rounded-xl bg-cyan-700 py-2 px-3 border border-gray-400'> {product.website}</Button>
+                            </div>
+
+
+
+
                         </div>
+                        
+  
                     </div>
                 </div> 
           
         </div>
       
-
-
-
-      
-  </div>
+</div>
+   
+  
   )
 }

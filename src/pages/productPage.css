@@ -1,160 +1,24 @@
- .productCard .card {
-    position: relative;
-    padding: 0;
-    margin: 0 !important;
-    border-radius: 10px;
-    overflow: hidden;
-    width: 270px;
-    height: 380px;
-    cursor: pointer;
-    border: none;
-    box-shadow: 0 5px 15px rgba(255,255,255, 0.8);
-    background-color: rgba(139, 172, 170, 0.5);
-  }
-  
-  .productCard .card:hover {
-    transform: scale(1.1);
-    transition-duration: 0.5s;
-  }
-  
-  .productCard .card .card-image {
-    width: 100%;
-    max-height: 320px;
-  }
-  
-  .productCard .card .card-image img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-  } 
-  
-  .productCard .card .card-content {
-    position: absolute;
-    bottom: -20px;
-    color: #000;
-    /* background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(128, 10, 10, 0.6)); */
-    background:  rgba(255, 255, 255, 0.15) ;
-    backdrop-filter: blur(15px);
-    min-height: 150px;
-    width: 100%;
-    transition: bottom 0.4s ease-in;
-    box-shadow: 0 -10px 10px rgba(255,255,255, 0.3);
-    border-top: 1px solid rgba(234, 234, 210, 0.5);
-  }
-  
-  .productCard .card:hover .card-content {
-    bottom: -150px;
-  }
-  
-  .productCard .card:hover .card-content h4 {
-    transform: translateY(-70px);
-    opacity: 1;
-  }
-  
-  .productCard .card:hover .card-content h2  {
-    transform: translateY(10px);
-    opacity: 0;
-  }
-  
-  .productCard .card .card-content h4{
-    font-size: 1.4rem;
-    padding: 0 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-align: center;
-    transition: 0.4s;
-    font-weight: 600;
-    opacity: 1;
-    transform: translateY(10px);
-    transition-delay: 0.1s;
-  }
-  
-  .productCard .card .card-content h2 {
-    font-size: 1.4rem;
-    padding: 0 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-align: center;
-    transition: 0.8s;
-    font-weight: 600;
-    opacity: 1;
-    transform: translateY(10px);
-    transition-delay: 0.3s;
-  }
-   
-  
-  .productCard .card .card-content h4 {
-    transition: 0.5s;
-    font-weight: 500;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-  }
-  
-  .productCard .card .card-content .social-icons {
-    list-style: none;
-    padding: 0;
-  }
-  
-  
-  
-  
-  @media (max-width: 991.5px) {
-    .productCard .container {
-        margin-top: 20px;
-    }
-  
-    .productCard .container .row .col-lg-3 {
-        margin: 30px 0px;
-    }
-  }
-  
-  
-  
-  /* ////////  top cover page media queris set for all ///////// */
-  @media screen and (max-width: 650px) {
-  
-    .productCard .cover .content {
-  
-        padding-top: 25vmin;
-        height: 100%;
-    }
-  
-  }
-  
-  @media screen and (max-width: 600px) {
-  
-    .productCard .cover .content {
-  
-        padding-top: 30vmin;
-        height: 100%;
-    }
-  
-  }
-  
-  @media screen and (max-width: 550px) {
-  
-    .productCard .cover .content {
-  
-        padding-top: 35vmin;
-        height: 100%;
-    }
-  
-  }
-  
-  @media screen and (max-width: 350px) {
-  
-  
-    .productCard .cover {
-        height: 50vh;
-    }
-  
-  
-    .productCard .cover .content {
-  
-        padding-top: 40vmin;
-    }
-  
-  }
-  
-  
-  
+ .imgcard::before {
+  position: fixed;
+  content: "";
+  box-shadow: 0 0 100px 40px #ffffff08;
+  top: -10%;
+  left: -100%;
+  transform: rotate(-45deg);
+  height: 60rem;
+  transition: .7s all;
+}
+
+.imgCard:hover {
+    border: 1px solid #ffffff44;
+    box-shadow: 0 7px 50px 10px #000000aa;
+    transform: scale(1.015);
+    filter: brightness(1.3);
+ } 
+
+
+ .imgCard:hover::before {
+  filter: brightness(.5);
+  top: -100%;
+  left: 200%;
+}
