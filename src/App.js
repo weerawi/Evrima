@@ -10,46 +10,75 @@ import About from './components/About/About';
 import ProfilePage from './pages/ProfilePage';
 import ContactPage from './pages/ContactPage';
 import { ProductPage } from './pages/ProductPage';
+import { staticData } from './appDataSet';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   // const[error,setError] = useState(null);
-  const url = "https://api.restful-api.dev/objects?search";
-
-
   
+  
+  //  /////////////         use for reterieve link data result /////////////////////////
+
+
+  // const url = "http://localhost:5000/products";
+
+
+  // const fetchSearchResults = useCallback(async () => {
+  //   if (searchInput.length === 0) {
+  //     setSearchResults([]);
+  //     return;
+  //   }
+
+  //   setIsLoading(true);
+  //   // setError(null);
+
+  //   try {
+  //     const response = await axios.get(
+  //       `${url}?search=${searchInput}`
+  //     );
+      
+  //     setSearchResults(response.data);
+  //     // if(!response.ok){
+  //     //   throw new Error('Something went wrong!');
+  //     // }
+  //   } catch (error) {
+      
+  //     console.error('Error fetching search results:', error);
+  //     // setError(error.message);
+  //   }
+
+  //   setIsLoading(false);
+  // } );
+
+
+  // /////////////////////////////////////////////////////////////////////////////////////
+
+
   const fetchSearchResults = useCallback(async () => {
     if (searchInput.length === 0) {
       setSearchResults([]);
       return;
     }
-
+  
     setIsLoading(true);
-    // setError(null);
-
+  
     try {
-      const response = await axios.get(
-        `${url}=${searchInput}`
-      );
-      
-      setSearchResults(response.data);
-      // if(!response.ok){
-      //   throw new Error('Something went wrong!');
-      // }
+      // Replace the axios call with the staticData import
+      setSearchResults(staticData);
     } catch (error) {
-      
       console.error('Error fetching search results:', error);
-      // setError(error.message);
     }
-
+  
     setIsLoading(false);
-  } );
+  }, [searchInput]);
+
+
 
     useEffect(() => {
       fetchSearchResults();
-  }, [searchInput]);
+  } );
 
   const handleSearchInputChange = (event) => {
     setSearchInput(event.target.value);
@@ -75,7 +104,7 @@ function App() {
               value={searchInput}
               onChange={handleSearchInputChange}  
               load={isLoading} 
-              result={searchResults.slice(0, 15)}
+              result={searchResults.slice(0, 10)}   // THIS INITALIZE THE MAXIMUM ITEMS VISBLE WHEN SEARCHING
               search={onSearch} />
             
           </Route>
