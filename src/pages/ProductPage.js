@@ -69,7 +69,7 @@ export const ProductPage = ( ) => {
 
 
                         <div className="my-5 flex justify-end "> 
-                            <p>{product.category}</p>
+                            <p>category: {product.category}</p>
                         </div>  
                         
                         <p class='mb-7 text-cyan-600'>Evrima will give you nothing,but save your time on us.</p>
