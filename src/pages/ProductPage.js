@@ -21,6 +21,10 @@ export const ProductPage = ( ) => {
     }
 //   const { name, image, price, views } = location.state || {};
 
+
+   
+   
+
   return (
     <div className='  h-[150vh] md:h-[100vh]    py-5 md:pb-1 pb-10 '>
 
@@ -57,13 +61,13 @@ export const ProductPage = ( ) => {
                         className=" mx-5 flex-[.8]  md:px-0 px-4 sm:px-24 overflow-y-auto rounded-2xl my-auto py-10 shadow-md shadow-white">
 
                         <div className='flex flex-col '>
-                            <div className="flex justify-center  text-xl md:text-2xl font-bold mb-2 leading-tight">
+                            <div className=" px-5 flex justify-center  text-xl md:text-2xl font-bold mb-2 leading-tight">
                                 {product.title}
                             </div>
 
 
                             {/* PRODUCT RETRIEVW DETAILS */}
-                            <div className="my-5 px-10 md:px-20 lg:px-28 xl:px-36 flex  justify-between ">
+                            <div className="my-5 px-10 md:px-20 lg:px-28 xl:px-36 flex font-semibold justify-between ">
                                 <div>
                                      {product.rank}
                                 </div>
@@ -74,13 +78,13 @@ export const ProductPage = ( ) => {
                             </div>
 
                             {/* PRODUCT PRICE */}
-                            <div className=" flex justify-center  text-base md:text-lg font-semibold mb-5">
+                            <div className=" flex justify-center  text-base md:text-lg font-bold mb-5">
                                 {product.price}
                             </div>
 
 
                             {/* PRODUCT RATINGS */}
-                            <div className="my-5 px-10 md:px-20 lg:px-28 xl:px-36 flex  justify-between ">
+                            <div className="my-5 px-10 md:px-20 lg:px-28 xl:px-36 flex font-semibold justify-between ">
                                 <div>
                                      {rating}
 
@@ -98,9 +102,9 @@ export const ProductPage = ( ) => {
 
                              
 
-
-                            <div className=" flex justify-center ">
-                                <Button className=' rounded-xl bg-cyan-700 py-2 px-3 border border-gray-400'> {product.website}</Button>
+                              {/* direct to specific website new window when click the button */}
+                            <div className=" flex justify-center font-semibold">
+                                <Button onClick={() => window.open(product.link, '_blank')} className=' rounded-xl bg-cyan-700 py-2 px-3 border border-gray-400'> {product.website}</Button>
                             </div>
 
 
