@@ -2,7 +2,11 @@ import { Button } from '@chakra-ui/react';
 import React from 'react'
 import { useLocation } from 'react-router-dom';
 // import "./productPage.css";
- 
+import Rating from '@mui/material/Rating';
+import Stack from '@mui/material/Stack';
+import AOS from "aos";
+import "aos/dist/aos.css";  
+AOS.init();
 
 
  
@@ -10,6 +14,7 @@ export const ProductPage = ( ) => {
 
     const location = useLocation();
     const { product } = location.state || {};
+    const rating =  product.rating.slice(0,3);
     
     if (!product) {
       return null; // Handle the case where product details are not available yet
@@ -24,7 +29,7 @@ export const ProductPage = ( ) => {
             
                 <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px] mt-12">
                     {/* PRODUCT LEFT SIDE IMAGE CAROUSAL */}
-                    <div 
+                    <div  data-aos="fade-right"
                          className="  items-center justify-center w-full md:w-auto flex md:flex-[.7] max-w-[700px] lg:max-w-full mx-auto lg:mx-0 ">
  
                                     {/*  {image}   */}
@@ -40,7 +45,7 @@ export const ProductPage = ( ) => {
                     </div>
 
                     {/* PRODUCT RIGHT SIDE DETAILS */}
-                    <div style={{
+                    <div   data-aos="fade-left"  style={{
                         
                         backdropFilter: 'blur(25px)',
                         // background: `url(https://m.media-amazon.com/images/I/51dp6BGML8L._SL1280_.jpg)`,
@@ -77,7 +82,13 @@ export const ProductPage = ( ) => {
                             {/* PRODUCT RATINGS */}
                             <div className="my-5 px-10 md:px-20 lg:px-28 xl:px-36 flex  justify-between ">
                                 <div>
-                                     {product.rating}
+                                     {rating}
+
+                                     <Stack spacing={1}> 
+                                     <Rating name="half-rating" defaultValue={rating} precision={0.5} />
+                                    </Stack>
+
+
                                 </div>
 
                                 <div>

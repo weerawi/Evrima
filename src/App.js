@@ -104,7 +104,7 @@ function App() {
               value={searchInput}
               onChange={handleSearchInputChange}  
               load={isLoading} 
-              result={searchResults.slice(0, 10)}   // THIS INITALIZE THE MAXIMUM ITEMS VISBLE WHEN SEARCHING
+              result={searchResults.slice(0, 20)}   // THIS INITALIZE THE MAXIMUM ITEMS VISBLE WHEN SEARCHING
               search={onSearch} />
             
           </Route>
