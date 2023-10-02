@@ -208,6 +208,8 @@ AOS.init();
   // reference create to scroll to the result cards
   const resultCardsRef = useRef(null);
 
+   
+
 
 
   useEffect(() => {
@@ -220,11 +222,11 @@ AOS.init();
 
   const modalRef = useRef();
   
-  const handleOnClickOutside = (event) => {
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
-      onClose(); // Close the modal when clicking outside
-    }
-  };
+  // const handleOnClickOutside = (event) => {
+  //   if (modalRef.current && !modalRef.current.contains(event.target)) {
+  //     onClose(); 
+  //   }
+  // };
 
   const handleSearch = () => { 
     props.search(props.value);
@@ -250,11 +252,9 @@ AOS.init();
 
 
   return (
-    <div className={`overflow-hidden h-auto pb-20 flex-row pt-44 items-center   justify-center`}>
+    <div className={`overflow-hidden h-auto pb-20 flex-row pt-44 items-center justify-center`}>
 
-
-
-      <div   className="mx-auto w-10/12 lg:w-90 mb-56  p-10 text-center   justify-center items-center my-5 mx-5  " >
+      <div   className="mx-auto md:w-10/12 w-full mb-56  p-10 text-center   justify-center items-center my-5  " >
         <h2 className="  text-4xl md:text-6xl text-white ">Welcome to Evrima!</h2>
         <div style={{color:'white'}}  >
           <Typed 
@@ -282,12 +282,12 @@ AOS.init();
 
       <div  
       // style={{backgroundColor:'rgba(0, 0, 0, 0.5)'}}
-         className="mx-auto w-10/12 lg:w-90   rounded-xl shadow-md px-10 text-center flex-row justify-center items-center   mx-5 bg-trasparent">
+         className="  w-full md:w-90   rounded-xl shadow-md md:px-10 px-0 text-center flex-row justify-center items-center  bg-trasparent">
          
          <div className='items-center'>
 
             <input
-              className="ml-2 w-10/12 lg:w-90 mr-3 bg-gray-400 rounded-xl my-3 px-4 text-white text-xl md:text-2xl"
+              className="   md:w-10/12 w-full  mr-3 bg-gray-400 rounded-xl my-3 px-4 text-white text-xl md:text-2xl"
               type="text"
               value={props.value}
               onChange={(e) => {
@@ -302,7 +302,7 @@ AOS.init();
             /> 
           <button
             onClick={handleSearch}
-            className="bg-gray-100   text-cyan-700 font-bold rounded-xl cursor-pointer my-3 hover:bg-cyan-900 p-2 hover:text-cyan-100"
+            className="bg-gray-100 md:text-lg text-sm  text-cyan-700 font-bold rounded-xl cursor-pointer my-3 hover:bg-cyan-900 p-2 hover:text-cyan-100"
           >
             Search
           </button>
@@ -311,12 +311,12 @@ AOS.init();
         {/* Filtered Product Cards search Bar */}
         
 
-        <div  ref={modalRef} className='relative overflow-x-hidden left-1/2 transform -translate-x-1/2 z-10 '>
+        <div  ref={modalRef} className='relative overflow-x-hidden left-1/2 transform -translate-x-1/2 z-10  '>
           
           {/* <SearchingBoxModal props={props} selectedName={selectedName} handleNameClick={handleNameClick} isOpen={isOpen} onClose={onClose} onClickOutside={handleOnClickOutside}/> */}
         
         
-          <div data-aos="fade-down" data-aos-duration="400" className="bg-gray-300 rounded-xl flex flex-col border border-gray-300">
+          <div data-aos="fade-down" data-aos-duration="400" className="bg-gray-300  rounded-xl flex flex-col border border-gray-300 max-h-80 overflow-y-auto">
               {props.result
                 .filter((product) => {
                   const searchTerm = typeof props.value === 'string' ? props.value.toLowerCase() : '';
@@ -325,7 +325,7 @@ AOS.init();
                 })
                 .map((product) => (
                   <div
-                    className={`cursor-pointer hover:text-red-800 text-left my-2 mx-4 ${
+                    className={`cursor-pointer border-2 p-1 border-gray-400 rounded-lg hover:text-red-800 text-left my-2 mx-4 ${
                       product.title === selectedName ? 'text-red-800' : ''
                     }`}
                     key={product.id}
@@ -343,7 +343,7 @@ AOS.init();
       </div>
 
       {/* Filtered Product Cards */}
-      <div className='px-5' ref={resultCardsRef}  >
+      {/* <div className='px-5' ref={resultCardsRef}  >
           {searchCard && !props.load && (
             <div  className="grid  lg:grid-cols-3 md:grid-cols-2 grid-cols-1  ">
               {props.result
@@ -361,7 +361,35 @@ AOS.init();
             </div>
           )}
           {searchCard && props.load && <p className='text-xl justify-center align-center text-white'>Loading search results..</p>}
-        </div>
+      </div> */}
+
+
+      {/* Filtered Product Cards */}
+      <div className='px-5' ref={resultCardsRef}>
+        {searchCard && !props.load && (
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+            {props.result
+              .filter((product) => {
+                const searchTerm = typeof props.value === 'string' ? props.value.toLowerCase() : '';
+                const fullName = product.title.toLowerCase();
+                return fullName.includes(searchTerm);
+              })
+              .sort((a, b) => b.rank - a.rank) // Sort by rank in descending order
+              .slice(0, 10) // Get top ten results
+              .map((product) => (
+                <div key={product.id} data-aos="zoom-in" data-aos-duration="800">
+                  <Card product={product} />
+                </div>
+              ))}
+          </div>
+        )}
+        {searchCard && props.load && <p className='text-xl justify-center align-center text-white'>Loading search results..</p>}
+      </div>
+
+
+
+
+
     </div>
   );
 };
