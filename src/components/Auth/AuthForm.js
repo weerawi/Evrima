@@ -5,6 +5,7 @@ import AuthContext from '../../store/auth-context';
 import useSignInGoogle from '../../store/firebaseConfig';
 import {Image} from "../../constants/Images";
 import "./Auth.css"
+// import { ToastContainer, toast } from 'react-toastify';
 
 const AuthForm = () => {
   const history = useHistory();
@@ -75,6 +76,9 @@ const AuthForm = () => {
         ); 
         
         authCtx.login(data.idToken, expirationTime.toISOString() );
+        // Clear input fields
+        emailInputRef.current.value = '';
+        passwordInputRef.current.value = ''; 
         history.replace('/ ');
       })
       .catch((err) => {
@@ -82,15 +86,18 @@ const AuthForm = () => {
       });
   };
 
+ 
+
+
   return (
 
-    <div className="flex realtive items-center justify-center h-auto pb-24 pt-12">
+    <div className="   md:flex-row space-x-3 flex items-center justify-center   pb-24 pt-12"> 
 
-        <div className='  absolute items-center lg:block'>
-            <div className='h-[35rem] w-[23rem] relative items-center justify-center'> 
+        <div className=' hidden  lg:block my-auto '>
+            <div className='h-[39rem] w-[19.5rem] relative '> 
             
               <img   className='h-[35.5rem] w-[23.5rem] left' src={Image.Login}></img> 
-              <div className='mobileWallpaper h-[33.7rem] w-[20.5rem] absolute top-4 left-5'></div>
+              <div className='mobileWallpaper h-[34.5rem] w-[17.6rem] absolute top-3 left-4'></div>
 
             </div> 
         </div>
@@ -100,8 +107,8 @@ const AuthForm = () => {
 
 
       <div 
-      // style={{background :  'rgba(139, 172, 170, 0.5)' } }
-       className={"z-10 mx-auto  w-11/12 max-w-[25rem] rounded-md   shadow-md p-10 text-center"}>
+      style={{background :  'rgba(139, 172, 170, 0.5)' } }
+       className={"  mx-auto my-auto   w-11/12 max-w-[25rem] rounded-md   shadow-md p-10 text-center"}>
         <h1 class="text-center text-gray-100 font-bold text-2xl">{isLogin ? 'Login' : 'Sign Up'}</h1>
         <form  onSubmit={submitHandler}>
           
@@ -156,7 +163,7 @@ const AuthForm = () => {
 
               <div className=" mb-2">
                 <label className='block text-gray-200 font-bold mb-2' htmlFor='username'>Username</label>
-                <input className='w-full font-inherit bg-[#ccc] text-[#070A52] rounded-md border border-white p-1'type='username' id='username' />
+                <input className='w-full font-inherit bg-[#ccc] text-[#070A52] rounded-md border border-white p-1'type='username' id='username'  />
               </div>
 
               <div className=" mb-2">

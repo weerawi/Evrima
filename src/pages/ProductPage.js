@@ -27,19 +27,19 @@ export const ProductPage = ( ) => {
    
 
   return (
-    <div className='   h-[100vh]    py-10 '>
+    <div className='   h-[160vh]  md:h-[100vh]  py-10 '>
 
  
         <div className='details'>
             
 
-            <div className="relative flex-row  md:flex md:space-x-5 xl:max-w-3xl lg:max-w-2xl  md:max-w-xl   mx-auto mt-10 ">
+            <div className="relative flex-row   md:flex md:space-x-5 space-y-20 xl:max-w-3xl lg:max-w-2xl  md:max-w-xl   mx-auto mt-10 ">
                 
 
                 <div  data-aos="fade-right"
                         className="  items-center justify-center w-full md:w-auto flex md:flex-[.7] max-w-[700px] lg:max-w-full mx-auto lg:mx-0 ">
 
-                                {/*  {image}   */}
+                                 
                     <img style={{
                     
                     backdropFilter: 'blur(25px)', 
@@ -55,8 +55,8 @@ export const ProductPage = ( ) => {
                 
                 
                 
-                <div  className="card flex-[0.7] md:flex-[1] border border-gray-400 bg-gray-800 text-white p-8 rounded-lg shadow-white shadow-md">
-                    <div class='main'>
+                <div  className="  card flex-[0.7] md:flex-[1] border border-gray-400 bg-gray-800 text-white p-8 rounded-lg shadow-white shadow-md">
+                    <div class='  flex flex-col w-full'>
 
                         <div className="bg    ">
                             <h1 >{product.price}</h1>
@@ -74,7 +74,7 @@ export const ProductPage = ( ) => {
                         
                         <p class='mb-7 text-cyan-600'>Evrima will give you nothing,but save your time on us.</p>
                          
-                        <div class='flex justify-between items-center bg-gray-300 text-gray-900 rounded-md'>
+                        <div class='mt-7 flex font-semibold justify-between items-center  text-gray-100 rounded-md'>
 
                             {/* ratings */}
                             <div >   
@@ -98,7 +98,7 @@ export const ProductPage = ( ) => {
                         
                               {/* direct to specific website new window when click the button */}
                         <div className="mt-5 flex justify-center font-semibold">
-                            <Button onClick={() => window.open(product.link, '_blank')} className=' rounded-xl bg-cyan-700 py-2 px-3 border border-gray-400'> {product.website}</Button>
+                            <Button onClick={() => window.open(product.link, '_blank')} className=' rounded-xl bg-cyan-700 hover:bg-cyan-900 py-2 px-3 border border-gray-400'> {product.website}</Button>
                         </div>
 
                     </div>

@@ -12,7 +12,7 @@ code {
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
   overflow: hidden;
-  transition: .5s all;
+  transition: .5s all; 
 }
   
 .details .card hr {
@@ -22,14 +22,6 @@ code {
   margin-top: 1rem;
 }
 
- 
-
-.details .card .main {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  padding: 1rem;
-}
  
 .details .card:hover {
   border: 1px solid #ffffff44;
@@ -56,6 +48,7 @@ code {
 }
 
 .details .bg {
+
   
   position: absolute;
   top: 50%;
