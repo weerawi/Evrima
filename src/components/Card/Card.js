@@ -50,18 +50,14 @@ const Card = (props) => {
                             <h4  >{rating}</h4>
                           
                             <Stack spacing={1}>
-                              <Rating name="half-rating" defaultValue={rating} precision={0.5} />
+                               
+                              <Rating name="half-rating-read" defaultValue={rating} precision={0.5}  size="small"  readOnly />
                               
                             </Stack>
                           </div>
                           
-                          
-
-
-
-
-
-                          <h4 >{props.product.website}</h4>
+                           
+                          <h4 >{props.product.reviews}</h4>
                         </div>
                          
                     </div>

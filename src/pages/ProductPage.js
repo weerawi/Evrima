@@ -55,7 +55,7 @@ export const ProductPage = ( ) => {
                 
                 
                 
-                <div  className="  card flex-[0.7] md:flex-[1] border border-gray-400 bg-gray-800 text-white p-8 rounded-lg shadow-white shadow-md">
+                <div data-aos="fade-left" className="  card flex-[0.7] md:flex-[1] border border-gray-400 bg-gray-800 text-white p-8 rounded-lg shadow-white shadow-md">
                     <div class='  flex flex-col w-full'>
 
                         <div className="bg    ">
