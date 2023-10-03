@@ -281,11 +281,11 @@ AOS.init();
       
 
       <div  
-      // style={{backgroundColor:'rgba(0, 0, 0, 0.5)'}}
-         className="  w-full md:w-90   rounded-xl shadow-md md:px-10 px-0 text-center flex-row justify-center items-center  bg-trasparent">
+      style={{backgroundColor:'rgba(0, 0, 0, 0.5)'}}
+         className="  w-full md:w-90   rounded-xl shadow-md md:px-10 px-2 text-center flex-row justify-center items-center p-5 bg-trasparent">
          
-         <div className='items-center'>
-
+         {/* search bar input */}
+         <div className='items-center'> 
             <input
               className="   md:w-10/12 w-full  mr-3 bg-gray-400 rounded-xl my-3 px-4 text-white text-xl md:text-2xl"
               type="text"
@@ -308,13 +308,11 @@ AOS.init();
           </button>
          </div>
 
-        {/* Filtered Product Cards search Bar */}
-        
 
-        <div  ref={modalRef} className='relative overflow-x-hidden left-1/2 transform -translate-x-1/2 z-10  '>
-          
+
+        {/* Filtered Product Cards from search Bar */} 
+        <div  ref={modalRef} className='relative overflow-x-hidden left-1/2 transform -translate-x-1/2 z-10  '> 
           {/* <SearchingBoxModal props={props} selectedName={selectedName} handleNameClick={handleNameClick} isOpen={isOpen} onClose={onClose} onClickOutside={handleOnClickOutside}/> */}
-        
         
           <div data-aos="fade-down" data-aos-duration="400" className="bg-gray-300  rounded-xl flex flex-col border border-gray-300 max-h-80 overflow-y-auto">
               {props.result
@@ -325,7 +323,7 @@ AOS.init();
                 })
                 .map((product) => (
                   <div
-                    className={`cursor-pointer border-2 p-1 border-gray-400 rounded-lg hover:text-red-800 text-left my-2 mx-4 ${
+                    className={`cursor-pointer border-2 p-1 border-gray-400 hover:bg-gray-200 rounded-lg hover:text-red-800 text-left my-2 mx-4 ${
                       product.title === selectedName ? 'text-red-800' : ''
                     }`}
                     key={product.id}
@@ -364,7 +362,7 @@ AOS.init();
       </div> */}
 
 
-      {/* Filtered Product Cards */}
+      {/* Product Cards result */}
       <div className='px-5' ref={resultCardsRef}>
         {searchCard && !props.load && (
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
