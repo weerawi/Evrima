@@ -192,6 +192,8 @@ import AOS from "aos";
 import "aos/dist/aos.css"; 
 import { useDisclosure } from '@chakra-ui/react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import Autosuggest from 'react-autosuggest';
+
 AOS.init();
 
  
@@ -222,11 +224,7 @@ AOS.init();
 
   const modalRef = useRef();
   
-  // const handleOnClickOutside = (event) => {
-  //   if (modalRef.current && !modalRef.current.contains(event.target)) {
-  //     onClose(); 
-  //   }
-  // };
+   
 
   const handleSearch = () => { 
     props.search(props.value);
@@ -249,6 +247,20 @@ AOS.init();
   };
 
   
+
+  // suggesion function
+  const getSuggestions = (value) => {
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
+  
+    return inputLength === 0 ? [] : props.result.filter(product =>
+      product.title.toLowerCase().includes(inputValue)
+    );
+  };
+  
+
+  
+
 
 
   return (
@@ -281,85 +293,75 @@ AOS.init();
       
 
       <div  
-      style={{backgroundColor:'rgba(0, 0, 0, 0.5)'}}
-         className="  w-full md:w-90   rounded-xl shadow-md md:px-10 px-2 text-center flex-row justify-center items-center p-5 bg-trasparent">
+      style={{backgroundColor:'rgba(0,0,0, 0.5)'}}
+         className="  w-full md:w-90   rounded-xl shadow-md md:px-10 px-2 text-center flex-row justify-center items-center p-5 bg-trasparent ">
          
          {/* search bar input */}
          <div className='items-center'> 
-            <input
-              className="   md:w-10/12 w-full  mr-3 bg-gray-400 rounded-xl my-3 px-4 text-white text-xl md:text-2xl"
-              type="text"
-              value={props.value}
-              onChange={(e) => {
-                props.change(e);
-                setIsTyping(e.target.value.trim().length > 0); // Set isTyping state based on input value
+           
+            <button
+              onClick={handleSearch}
+              className="bg-gray-100 md:text-lg text-sm  text-cyan-700 font-bold rounded-xl cursor-pointer my-3 hover:bg-cyan-900 p-2 hover:text-cyan-100"
+            >
+              Search
+            </button>
+
+            <Autosuggest
+              suggestions={getSuggestions(props.value)}
+              onSuggestionsFetchRequested={({ value }) => {
+                props.change({ target: { value } });
               }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  handleSearch(); 
-                }
-              }}
-            /> 
-          <button
-            onClick={handleSearch}
-            className="bg-gray-100 md:text-lg text-sm  text-cyan-700 font-bold rounded-xl cursor-pointer my-3 hover:bg-cyan-900 p-2 hover:text-cyan-100"
-          >
-            Search
-          </button>
-         </div>
+              onSuggestionsClearRequested={() => {}}
+              getSuggestionValue={suggestion => suggestion.title}
+              renderSuggestion={suggestion => {
+                const query = props.value.trim(); // Get the trimmed value of the input
+                const suggestionTitle = suggestion.title.toLowerCase();
+                const queryIndex = suggestionTitle.indexOf(query.toLowerCase());
 
-
-
-        {/* Filtered Product Cards from search Bar */} 
-        <div  ref={modalRef} className='relative overflow-x-hidden left-1/2 transform -translate-x-1/2 z-10  '> 
-          {/* <SearchingBoxModal props={props} selectedName={selectedName} handleNameClick={handleNameClick} isOpen={isOpen} onClose={onClose} onClickOutside={handleOnClickOutside}/> */}
-        
-          <div data-aos="fade-down" data-aos-duration="400" className="bg-gray-300  rounded-xl flex flex-col border border-gray-300 max-h-80 overflow-y-auto">
-              {props.result
-                .filter((product) => {
-                  const searchTerm = typeof props.value === 'string' ? props.value.toLowerCase() : '';
-                  const fullName = product.title.toLowerCase();
-                  return fullName.includes(searchTerm);
-                })
-                .map((product) => (
+                return (
                   <div
-                    className={`cursor-pointer border-2 p-1 border-gray-400 hover:bg-gray-200 rounded-lg hover:text-red-800 text-left my-2 mx-4 ${
-                      product.title === selectedName ? 'text-red-800' : ''
+                    className={`cursor-pointer border-2 p-1 border-gray-400 bg-gray-300  hover:bg-gray-200 rounded-lg text-left my-2 mx-4 ${
+                      suggestion.title === selectedName ? 'text-red-800' : ''
                     }`}
-                    key={product.id}
-                    onClick={() => handleNameClick(product.title)}
+                    key={suggestion.id}
+                    onClick={() => handleNameClick(suggestion.title)}
                   >
-                    {product.title}
+                    {queryIndex !== -1 ? (
+                      <>
+                        {suggestion.title.substring(0, queryIndex)}
+                        <span className="text-red-800 font-bold">
+                          {suggestion.title.substring(queryIndex, queryIndex + query.length)}
+                        </span>
+                        {suggestion.title.substring(queryIndex + query.length)}
+                      </>
+                    ) : (
+                      suggestion.title
+                    )}
                   </div>
-                ))}
-            </div>
-         
+                );
+              }}
+              inputProps={{
+                value: props.value,
+                onChange: (e, { newValue }) => {
+                  props.change({ target: { value: newValue } });
+                },
+                onKeyDown: (e) => {
+                  if (e.key === 'Enter') {
+                    handleSearch(); 
+                  }
+                }, 
+                className: "md:w-10/12 w-full  mr-3 bg-gray-400 rounded-xl my-3 px-4 text-white text-xl md:text-2xl focus:outline-none"
+              }}
+              shouldRenderSuggestions={(value) => value.trim().length > 1}
+            />
+
+
+          </div>
+  
         </div>
-
-        
-      </div>
       </div>
 
-      {/* Filtered Product Cards */}
-      {/* <div className='px-5' ref={resultCardsRef}  >
-          {searchCard && !props.load && (
-            <div  className="grid  lg:grid-cols-3 md:grid-cols-2 grid-cols-1  ">
-              {props.result
-                .filter((product) => {
-                  const searchTerm = typeof props.value === 'string' ? props.value.toLowerCase() : '';
-                  const fullName = product.title.toLowerCase();
-                  return fullName.includes(searchTerm);
-                })
-                .map((product) => (
-                  <div  data-aos="zoom-in " data-aos-duration="800">
-                     <Card key={product.id} product={product}  />
-                  </div>
-                  
-                ))}
-            </div>
-          )}
-          {searchCard && props.load && <p className='text-xl justify-center align-center text-white'>Loading search results..</p>}
-      </div> */}
+     
 
 
       {/* Product Cards result */}
@@ -393,3 +395,18 @@ AOS.init();
 };
 
 export default StartingPageContent;
+
+
+
+
+
+///////////////////////////////////////////////
+////////////////////////////////////////////////
+//////////////////////////////////////////////
+
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+///////////////////////////////////////////////
+/////////////////////////////////////////////
+//////////////////////////////////////////////
+////////////////////////////////////////////////
