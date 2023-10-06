@@ -259,7 +259,14 @@ AOS.init();
   };
   
 
-  
+  // Define a function to render the suggestions container
+  const renderSuggestionsContainer = ({ containerProps, children, query }) => {
+    return (
+      <div {...containerProps} className="custom-suggestions-container max-h-96 overflow-y-auto">
+        {children}
+      </div>
+    );
+  };
 
 
 
@@ -272,8 +279,7 @@ AOS.init();
           <Typed 
             strings={[
               '  Search for products',
-              '  Search for categories',
-              '  Search for brands',
+              '  Search for categories', 
             ]}
             typeSpeed={40}
             backSpeed={50}
@@ -320,7 +326,7 @@ AOS.init();
 
                 return (
                   <div
-                    className={`cursor-pointer border-2 p-1 border-gray-400 bg-gray-300  hover:bg-gray-200 rounded-lg text-left my-2 mx-4 ${
+                    className={`cursor-pointer border-2 p-1 border-gray-400 bg-gray-300  hover:bg-gray-200 hover:text-red-700 rounded-lg text-left my-2 mx-4 ${
                       suggestion.title === selectedName ? 'text-red-800' : ''
                     }`}
                     key={suggestion.id}
@@ -345,6 +351,19 @@ AOS.init();
                 onChange: (e, { newValue }) => {
                   props.change({ target: { value: newValue } });
                 },
+                onBlur: (e, { highlightedSuggestion }) => {
+                  if (highlightedSuggestion) {
+                    // If there was a highlighted suggestion, do something with it
+                    console.log(`Selected suggestion: ${highlightedSuggestion.title}`);
+                    alert(`Selected suggestion: ${highlightedSuggestion.title}`);
+                    // You can perform additional actions here
+                  } else {
+                    // If there was no highlighted suggestion, you can handle it here
+                    console.log("No suggestion was highlighted");
+                    alert("No suggestion was highlighted");
+                    // You can perform additional actions here
+                  }
+                } ,
                 onKeyDown: (e) => {
                   if (e.key === 'Enter') {
                     handleSearch(); 
@@ -352,7 +371,8 @@ AOS.init();
                 }, 
                 className: "md:w-10/12 w-full  mr-3 bg-gray-400 rounded-xl my-3 px-4 text-white text-xl md:text-2xl focus:outline-none"
               }}
-              shouldRenderSuggestions={(value) => value.trim().length > 1}
+              shouldRenderSuggestions={(value) => value.trim().length > 1} 
+              renderSuggestionsContainer={renderSuggestionsContainer}
             />
 
 
