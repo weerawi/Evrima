@@ -12,11 +12,11 @@ const About = () => {
         </div>
         <div className="grid gap-12 items-center md:grid-cols-3">
 
-          <AboutProfile name={'thari nav'} image={Image.Tharindu} position={"front end"}/>
-          <AboutProfile name={'chamuditha'} image={Image.Chamuditha} position={"front end"}/>
-          <AboutProfile name={'samitha'} image={Image.Samitha} position={"front end"}/>
-          <AboutProfile name={'ushara'} image={Image.Ushara} position={"front end"}/>
-          <AboutProfile name={'imashi'} image={Image.Imashi} position={"front end"}/>
+          <AboutProfile name={'chamuditha gunawardene'} image={Image.Chamuditha} position={"front end"}/>
+          <AboutProfile name={'samitha nilupul'} image={Image.Samitha} position={"front end"}/>
+          <AboutProfile name={'tharindu viond'} image={Image.Tharindu} position={"front end"}/>
+          <AboutProfile name={'ushara prabash'} image={Image.Ushara} position={"front end"}/>
+          <AboutProfile name={'imashi gamage'} image={Image.Imashi} position={"front end"}/>
            
         </div>
       </div>
