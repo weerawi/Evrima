@@ -75,12 +75,16 @@ export const AuthContextProvider = (props) => {
   };
 
 
-  const signInGoogleHandler = (token, name,email,profilePic) => {
+  const signInGoogleHandler = (token, name,email,profilePic,gender,birthday) => {
     setToken(token);
     localStorage.setItem('token', token); 
     localStorage.setItem("name", name);
     localStorage.setItem("email", email);
     localStorage.setItem("profilePic", profilePic); 
+    localStorage.setItem("gender", gender);
+    localStorage.setItem("birthday", birthday);
+
+
  
   }; 
 

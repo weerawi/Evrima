@@ -1,4 +1,4 @@
-import { useRef, useContext } from 'react';
+import { useRef, useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom'; 
 import AuthContext from '../../store/auth-context'; 
 import './profileform.css';
@@ -9,10 +9,23 @@ const ProfileForm = () => {
   const newPasswordInputRef = useRef();
   const authCtx = useContext(AuthContext);
 
+
+  const [gender, setGender] = useState(localStorage.getItem("gender") || "");
+  const [birthday, setBirthday] = useState(localStorage.getItem("birthday") || "");
+
+
   const submitHandler = (event) => {
     event.preventDefault();
 
     const enteredNewPassword = newPasswordInputRef.current.value;
+
+
+    // Update gender and birthday in localStorage
+  localStorage.setItem("gender", gender);
+  localStorage.setItem("birthday", birthday);
+  
+
+
 
     // add validation
 
@@ -48,9 +61,36 @@ const ProfileForm = () => {
             />
             <p class="pt-2 text-lg font-semibold">{localStorage.getItem("name")}</p>
             <p class="text-sm text-gray-600">{localStorage.getItem("email")}</p>
+            <p class="text-sm  ">{localStorage.getItem("gender")}</p>
+            <p class="text-sm  ">{localStorage.getItem("birthday")}</p>
             <div class="mt-5"> 
 
               <form className=" text-md  border-t   m-3 p-3" onSubmit={submitHandler}>
+
+
+              <div className="mb-2">
+                <label className="font-thin text-sm" htmlFor="gender">Gender</label>
+                <input
+                  className="h-8 bg-gray-100 rounded-md border-2 border-gray-400"
+                  type="text"
+                  id="gender"
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                />
+              </div>
+              
+              <div className="mb-2">
+                <label className="font-thin text-sm" htmlFor="birthday">Birthday</label>
+                <input
+                  className="h-8 bg-gray-100 rounded-md border-2 border-gray-400"
+                  type="text"
+                  id="birthday"
+                  value={birthday}
+                  onChange={(e) => setBirthday(e.target.value)}
+                />
+              </div>
+
+
                 <div className=" mb-2">
                   <label className="font-thin text-sm" htmlFor='new-password '>New Password</label>
                   <input className="h-8 bg-gray-100 rounded-md border-2 border-gray-400" type='password' id='new-password' minLength="7" ref={newPasswordInputRef}  />

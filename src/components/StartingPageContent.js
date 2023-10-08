@@ -193,6 +193,7 @@ import "aos/dist/aos.css";
 import { useDisclosure } from '@chakra-ui/react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Autosuggest from 'react-autosuggest';
+import { Search, SearchOutlined } from '@material-ui/icons';
 
 AOS.init();
 
@@ -286,6 +287,7 @@ AOS.init();
             attr="placeholder"
             loop
           >
+             
             <input
               className="ml-2 bg-transparent text-white text-xl md:text-2xl"
               type="text"  
@@ -307,10 +309,12 @@ AOS.init();
            
             <button
               onClick={handleSearch}
-              className="bg-gray-100 md:text-lg text-sm  text-cyan-700 font-bold rounded-xl cursor-pointer my-3 hover:bg-cyan-900 p-2 hover:text-cyan-100"
+              className="bg-cyan-700 md:text-lg text-sm  text-gray-50 font-bold rounded-xl cursor-pointer my-3 hover:bg-gray-200 p-2 hover:text-cyan-900"
             >
               Search
+              <SearchOutlined   />
             </button>
+            
 
             <Autosuggest
               suggestions={getSuggestions(props.value)}
@@ -351,19 +355,19 @@ AOS.init();
                 onChange: (e, { newValue }) => {
                   props.change({ target: { value: newValue } });
                 },
-                onBlur: (e, { highlightedSuggestion }) => {
-                  if (highlightedSuggestion) {
-                    // If there was a highlighted suggestion, do something with it
-                    console.log(`Selected suggestion: ${highlightedSuggestion.title}`);
-                    alert(`Selected suggestion: ${highlightedSuggestion.title}`);
-                    // You can perform additional actions here
-                  } else {
-                    // If there was no highlighted suggestion, you can handle it here
-                    console.log("No suggestion was highlighted");
-                    alert("No suggestion was highlighted");
-                    // You can perform additional actions here
-                  }
-                } ,
+                // onBlur: (e, { highlightedSuggestion }) => {
+                //   if (highlightedSuggestion) {
+                //     // If there was a highlighted suggestion, do something with it
+                //     console.log(`Selected suggestion: ${highlightedSuggestion.title}`);
+                //     alert(`Selected suggestion: ${highlightedSuggestion.title}`);
+                //     // You can perform additional actions here
+                //   } else {
+                //     // If there was no highlighted suggestion, you can handle it here
+                //     console.log("No suggestion was highlighted");
+                //     alert("No suggestion was highlighted");
+                //     // You can perform additional actions here
+                //   }
+                // } ,
                 onKeyDown: (e) => {
                   if (e.key === 'Enter') {
                     handleSearch(); 
@@ -386,7 +390,9 @@ AOS.init();
 
       {/* Product Cards result */}
       <div className='px-5' ref={resultCardsRef}>
+      
         {searchCard && !props.load && (
+          
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
             {props.result
               .filter((product) => {
