@@ -2,6 +2,7 @@ import { useRef, useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom'; 
 import AuthContext from '../../store/auth-context'; 
 import './profileform.css';
+import { DateRange } from '@material-ui/icons';
 
 const ProfileForm = () => {
   const history = useHistory();
@@ -12,6 +13,10 @@ const ProfileForm = () => {
 
   const [gender, setGender] = useState(localStorage.getItem("gender") || "");
   const [birthday, setBirthday] = useState(localStorage.getItem("birthday") || "");
+
+  const handleGenderChange = (e) => {
+    setGender(e.target.value);
+  };
 
 
   const submitHandler = (event) => {
@@ -68,26 +73,74 @@ const ProfileForm = () => {
               <form className=" text-md  border-t   m-3 p-3" onSubmit={submitHandler}>
 
 
-              <div className="mb-2">
+              {/* <div className="mb-2">
                 <label className="font-thin text-sm" htmlFor="gender">Gender</label>
                 <input
                   className="h-8 bg-gray-100 rounded-md border-2 border-gray-400"
-                  type="text"
+                  type="radio"
                   id="gender"
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
                 />
+              </div> */}
+
+              <div className="my-2">
+              <label className="font-thin text-sm" htmlFor="gender">Gender</label>
+                <div
+                  style={{ background: 'rgba(255, 255, 255, 0.25)' }}
+                  className="rounded shadow-sm shadow-white"
+                >
+                  <div className="text-center p-1 flex justify-between"> 
+                    <div className="flex items-center mt-1">
+                      <input
+                        type="radio"
+                        id="male"
+                        value="male"
+                        checked={gender === 'male'}
+                        onChange={handleGenderChange}
+                      />
+                      <label htmlFor="male" className="ml-2">
+                        Male
+                      </label>
+                    </div>
+                    <div className="flex items-center mt-1">
+                      <input
+                        type="radio"
+                        id="female"
+                        value="female"
+                        checked={gender === 'female'}
+                        onChange={handleGenderChange}
+                      />
+                      <label htmlFor="female" className="ml-2">
+                        Female
+                      </label>
+                    </div>
+                    <div className="flex items-center mt-1">
+                      <input
+                        type="radio"
+                        id="other"
+                        value="other"
+                        checked={gender === 'other'}
+                        onChange={handleGenderChange}
+                      />
+                      <label htmlFor="other" className="ml-2">
+                        Other
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
               
               <div className="mb-2">
-                <label className="font-thin text-sm" htmlFor="birthday">Birthday</label>
+                <label className="font-thin text-sm" htmlFor="birthday"><DateRange/>Birthday</label>
                 <input
                   className="h-8 bg-gray-100 rounded-md border-2 border-gray-400"
-                  type="text"
+                  type="date"
                   id="birthday"
                   value={birthday}
                   onChange={(e) => setBirthday(e.target.value)}
                 />
+                
               </div>
 
 
