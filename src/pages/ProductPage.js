@@ -1,5 +1,5 @@
 import { Button } from '@chakra-ui/react';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
 import "./productPage.css";
 import Rating from '@mui/material/Rating';
@@ -16,6 +16,14 @@ export const ProductPage = ( ) => {
     const { product } = location.state || {};
     const rating =  product.rating.slice(0,3);
     
+
+    //to direct to the bottom of the page initially
+     useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to the top when the component mounts
+    }, []); // Empty dependency array means this effect runs once, similar to componentDidMount
+    
+
+      
     if (!product) {
       return null; // Handle the case where product details are not available yet
     }
