@@ -92,7 +92,7 @@ const MainNavigation = () => {
 
      {/* Mobile icon start */}
      <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center
-        items-center bg-red-100 hover:bg-black/[0.05] cursor-pointer relative mr-2 "> 
+        items-center bg-cyan-100 hover:bg-black/[0.5] hover:text-cyan-100 cursor-pointer relative mr-5 "> 
         {/*  ///////////////////////////////////////////////
         because of the using medium size to change menu visible , 
         toggle icon also hidden after medium  [  md:hidden ]
@@ -105,7 +105,7 @@ const MainNavigation = () => {
               />
           ) : (
               <BiMenuAltRight
-                  className="text-[20px]"
+                  className="text-[20px] "
                   onClick={() => setMobileMenu(true)}
               />
           )}
