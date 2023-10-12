@@ -351,72 +351,8 @@ export const staticData = [
       title: "Invicta Men's I Force Collection Chronograph Strap Watch",
       website: "amazon"
       },
-      {
-        "id ": 28,
-        availability: "In Stock",
-        category: "sunscreen",
-        image_url: "https://m.media-amazon.com/images/I/41LcEG6jOIL._SX300_SY300_QL70_ML2_.jpg",
-        link: "https://www.amazon.com/Neutrogena-Hydro-Boost-Water-Sunscreen/dp/B078XNN4RJ/ref=sr_1_28?crid=BCICLEMKVXND&keywords=sunscreen&qid=1695194127&sprefix...",
-        price: "$8.97",
-        rank: 16463.348,
-        rating: "4.8 out of 5 stars",
-        reviews: "2,810 ratings",
-        title: "Neutrogena Hydro Boost Water Gel Lotion SPF 50, 3 fl. oz",
-        website: "amazon"
-      },
-      {
-        "id ": 29,
-        availability: "In Stock",
-        category: "sunscreen",
-        image_url: "https://m.media-amazon.com/images/I/51tqAMdfnGL._SX300_SY300_QL70_ML2_.jpg",
-        link: "https://www.amazon.com/Sport-Continuous-Sunscreen-Spectrum-Broad-Spectrum/dp/B01M8G39OW/ref=sr_1_15?crid=BCICLEMKVXND&keywords=sunscreen&qid=169...",
-        price: "$11.97",
-        rank: 11865.438,
-        rating: "4.7 out of 5 stars",
-        reviews: "1,992 ratings",
-        title: "Neutrogena Ultra Sport 50+ SPF Sunscreen Spray, 5 Oz",
-        website: "amazon"
-      },
-      {
-        "id ": 30,
-        availability: "In Stock",
-        category: "sunscreen",
-        image_url: "https://m.media-amazon.com/images/I/41pAd8va5FL._SX300_SY300_QL70_ML2_.jpg",
-        link: "https://www.amazon.com/Neutrogena-Ultra-Sheer-Sunscreen-Non-Greasy-Resistant/dp/B001TSOQV0/ref=sr_1_44?crid=BCICLEMKVXND&keywords=sunscreen&q...",
-        price: "$8.97",
-        rank: 16463.36,
-        rating: "4.7 out of 5 stars",
-        reviews: "13,818 ratings",
-        title: "Neutrogena Ultra Sheer Dry-Touch Sunscreen SPF 45, 3 Fl Oz",
-        website: "amazon"
-      },
-      {
-        "id ": 31,
-        availability: "In Stock",
-        category: "sunscreen",
-        image_url: "https://m.media-amazon.com/images/I/41LcEG6jOIL._SX300_SY300_QL70_ML2_.jpg",
-        link: "https://www.amazon.com/Neutrogena-Hydro-Boost-Water-Sunscreen/dp/B078XNN4RJ/ref=sr_1_28?crid=BCICLEMKVXND&keywords=sunscreen&qid=1695194127&sprefix...",
-        price: "$8.97",
-        rank: 16463.348,
-        rating: "4.8 out of 5 stars",
-        reviews: "2,810 ratings",
-        title: "Neutrogena Hydro Boost Water Gel Lotion SPF 50, 3 fl. oz",
-        website: "amazon"
-      },
-      { 
-        "id ": 32,
-        availability: "In Stock",
-        category: "sunscreen",
-        image_url: "https://m.media-amazon.com/images/I/51tqAMdfnGL._SX300_SY300_QL70_ML2_.jpg",
-        link: "https://www.amazon.com/Sport-Continuous-Sunscreen-Spectrum-Broad-Spectrum/dp/B01M8G39OW/ref=sr_1_15?crid=BCICLEMKVXND&keywords=sunscreen&qid=169...",
-        price: "$11.97",
-        rank: 11865.438,
-        rating: "4.7 out of 5 stars",
-        reviews: "1,992 ratings",
-        title: "Neutrogena Ultra Sport 50+ SPF Sunscreen Spray, 5 Oz",
-        website: "amazon"
-      }
-    
+       
+       
   ];
   
   // Make sure to add the new data without removing the existing data in the `staticData` array.
