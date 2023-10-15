@@ -10,11 +10,11 @@ const Footer = () => {
         <footer className="bg-black text-white pt-8 pb-3 relative">
 
         <svg 
-          className="absolute top-0 w-full h-5 -mt-4  lg:-mt-8 lg:h-8   sm:-mt-6 sm:h-6 text-black "
+          className="absolute top-0 w-full h-5 -mt-4  lg:-mt-8 lg:h-8   sm:-mt-6 sm:h-6 text-black  "
           preserveAspectRatio="none"
           viewBox="0 0 1440 54"
         >
-          <path
+          <path  
             fill="currentColor"
             d="M0 22L120 16.7C240 11 480 1.00001 720 0.700012C960 1.00001 1200 11 1320 16.7L1440 22V54H1320C1200 54 960 54 720 54C480 54 240 54 120 54H0V22Z"
           />
@@ -28,18 +28,13 @@ const Footer = () => {
                         <div className="font-oswald font-medium uppercase text-sm cursor-pointer">
                             Find a store
                         </div>
-                        <div className="font-oswald font-medium uppercase text-sm cursor-pointer">
-                            become a partner
-                        </div>
+                         
                         <div className="font-oswald font-medium uppercase text-sm cursor-pointer">
                             sign up for email
                         </div>
                         <div className="font-oswald font-medium uppercase text-sm cursor-pointer">
                             send us feedback
-                        </div>
-                        <div className="font-oswald font-medium uppercase text-sm cursor-pointer">
-                            student discount
-                        </div>
+                        </div> 
                     </div>
                     {/* MENU END */}
 
@@ -50,18 +45,7 @@ const Footer = () => {
                             <div className="font-oswald font-medium uppercase text-sm">
                                 get help
                             </div>
-                            <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
-                                Order Status
-                            </div>
-                            <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
-                                Delivery
-                            </div>
-                            <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
-                                Returns
-                            </div>
-                            <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
-                                Payment Options
-                            </div>
+                             
                             <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
                                 Contact Us
                             </div>
@@ -71,20 +55,15 @@ const Footer = () => {
                         {/* MENU START */}
                         <div className="flex flex-col gap-3">
                             <div className="font-oswald font-medium uppercase text-sm">
-                                About nike
+                                About Evrima
                             </div>
                             <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
                                 News
                             </div>
+                             
                             <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
-                                Careers
-                            </div>
-                            <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
-                                Investors
-                            </div>
-                            <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
-                                Sustainability
-                            </div>
+                                Latest
+                            </div> 
                         </div>
                         {/* MENU END */}
                     </div>
@@ -132,7 +111,7 @@ const Footer = () => {
             <Wrapper className="flex justify-between mt-10 flex-col md:flex-row gap-[10px] md:gap-0">
                 {/* LEFT START */}
                 <div className="text-[12px] text-white/[0.5] hover:text-white cursor-pointer text-center md:text-left">
-                    © 2023 Nike, Inc. All Rights Reserved
+                    © 2023 Evrima Team. All Rights Reserved
                 </div>
                 {/* LEFT END */}
 
