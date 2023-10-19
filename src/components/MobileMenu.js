@@ -16,10 +16,13 @@ const MobileMenu = ({setMobileMenu}) => {
   };
 
   return (
-    <div className='mt-12 bg-cyan-100'>
+    <div className='mt-12 bg-cyan-700'>
          
       <nav onClick={()=>{  setMobileMenu(false)}  }>
-        <ul className='m-0 p-0 md:text-lg  text-gray-700 flex flex-col items-baseline  font-medium space-y-5'>
+        <ul style={ {  
+            fontFamily: 'Courier New',
+            letterSpacing: '2px' , } } className='m-0 p-0 md:text-lg  text-gray-700 flex flex-col items-baseline  font-medium space-y-5'
+        >
           
           {!isLoggedIn  && (
             <li className={`mx-4 ${!isFixed ? 'hover:text-gray-900': 'hover:text-gray-500 text-gray-300'} font-bold`}>
@@ -44,7 +47,9 @@ const MobileMenu = ({setMobileMenu}) => {
           )}
           {isLoggedIn && (
             <li className='mx-4'>
-              <button className={` ${!isFixed ? 'hover:text-gray-900': 'hover:text-gray-500 text-gray-300'}  font-bold   `} 
+              <button style={ {  
+                fontFamily: 'Courier New',
+                letterSpacing: '2px' , } } className={` ${!isFixed ? 'hover:text-gray-900': 'hover:text-gray-500 text-gray-300'}  font-bold   `} 
               onClick={handleLogout}>Logout</button>
             </li>
           )}  

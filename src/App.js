@@ -16,13 +16,13 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchInput, setSearchInput] = useState('');
-  // const[error,setError] = useState(null);
+  const[error,setError] = useState(null);
   
   
   //  /////////////         use for reterieve link data result /////////////////////////
 
 
-  // const url = "http://localhost:5000/products";
+  // const url = "http://localhost:5000/app";
 
 
   // const fetchSearchResults = useCallback(async () => {
@@ -32,21 +32,23 @@ function App() {
   //   }
 
   //   setIsLoading(true);
-  //   // setError(null);
+  //   setError(null);
 
   //   try {
   //     const response = await axios.get(
   //       `${url}?search=${searchInput}`
   //     );
       
+  //     console.log(response.data)
   //     setSearchResults(response.data);
-  //     // if(!response.ok){
-  //     //   throw new Error('Something went wrong!');
-  //     // }
+  //     if (response.status !== 200) {
+  //       throw new Error('Something went wrong!');
+  //     }
+      
   //   } catch (error) {
       
   //     console.error('Error fetching search results:', error);
-  //     // setError(error.message);
+  //     setError(error.message);
   //   }
 
   //   setIsLoading(false);
@@ -76,9 +78,9 @@ function App() {
 
 
 
-    useEffect(() => {
+  useEffect(() => {
       fetchSearchResults();
-  } );
+  }, [searchInput]);
 
   const handleSearchInputChange = (event) => {
     setSearchInput(event.target.value);
@@ -104,7 +106,7 @@ function App() {
               value={searchInput}
               onChange={handleSearchInputChange}  
               load={isLoading} 
-              result={searchResults.slice(0, 20)}   // THIS INITALIZE THE MAXIMUM ITEMS VISBLE WHEN SEARCHING
+              result={searchResults.slice(0, 200)}   // THIS INITALIZE THE MAXIMUM ITEMS VISBLE WHEN SEARCHING
               search={onSearch} />
             
           </Route>
