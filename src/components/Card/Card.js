@@ -10,7 +10,7 @@ const Card = (props) => {
 
   const history = useHistory(); 
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (e) => { 
     history.push(`/product/${props.product.id}`,{ product: props.product } );
   };
  
@@ -66,11 +66,7 @@ const Card = (props) => {
         </div>
 
       </div>
-
-      
-
-
-
+ 
     </div>
  
 
