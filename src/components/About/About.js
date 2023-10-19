@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Image} from "../../constants/Images";
 import AboutProfile from './AboutProfile';
 
 const About = () => {
+  //to direct to the bottom of the page initially
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top when the component mounts
+}, []); // Empty dependency array means this effect runs once, similar to componentDidMount
+
+
+
   return (
     <div className='w-full'  > 
       <div  className=" py-20  mx-auto px-6 md:px-12 xl:px-32">
