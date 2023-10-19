@@ -59,9 +59,9 @@ const MainNavigation = () => {
 
     style={{
       backdropFilter: 'blur(6px)',
-      background: !isScrolled || !isFixed ? 'rgba(139, 172, 170, 0.3)' : 'transparent',
+      background: !isScrolled || !isFixed ? 'rgba(139, 172, 170, 0.3)' : ' ',
       borderBottom: !isScrolled || !isFixed ? '1px solid rgba(255, 255, 255, 0.65)' : '1px solid rgba(255, 255, 255, 0.25) ',
-      
+      transition: "background 0.5s ease-in-out",
       position: isFixed ? 'fixed' : 'relative',
       top: isFixed ? '0' : 'auto', 
       height: '4.5rem',
@@ -69,13 +69,17 @@ const MainNavigation = () => {
     }}
     className="   w-full flex  justify-between items-center">
 
-    <Link to='/' className='flex px-10'>
-      {/* <div className=" ml-2 text-3xl text-white m-0">Evrima</div> */}
-      <img src={Image.Evrima} className='w-[40px] md:w-[50px]  ' alt='logo' />
+    <Link to='/' className='flex flex-col px-10'>
       
+      <div className=" ml-2 text-xl md:text-2xl hover:text-white font-semibold text-gray-300   m-0" 
+      style = {{ 
+        fontFamily: 'Courier',
+         letterSpacing: '5px' ,
+         transition: 'color 0.2s ease-in-out '}} >Evrima</div>
+      {/* <img src={Image.Evrima} className='w-[40px] md:w-[50px]  ' alt='logo' /> */}
     </Link>
 
-    <Menu color={colorStyle}/>
+    <Menu color={colorStyle} scroll={isScrolled}/>
 
     <Drawer
       anchor="left" // Set the anchor to the left side
@@ -83,13 +87,13 @@ const MainNavigation = () => {
       onClose={() => setMobileMenu(false)}
       classes={{
         paper: classes.drawerPaper, // Use the defined styles for the paper
-      }}>
+      }}
+       
+      >
         <MobileMenu setMobileMenu={setMobileMenu}/>
 
     </Drawer>
   
-
-
      {/* Mobile icon start */}
      <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center
         items-center bg-cyan-100 hover:bg-black/[0.5] hover:text-cyan-100 cursor-pointer relative mr-5 "> 
