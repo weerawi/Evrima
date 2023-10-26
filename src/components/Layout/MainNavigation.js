@@ -88,7 +88,7 @@ const MainNavigation = () => {
       classes={{
         paper: classes.drawerPaper, // Use the defined styles for the paper
       }}
-       
+      //  style={{backgroundColor: 'cyan'}}
       >
         <MobileMenu setMobileMenu={setMobileMenu}/>
 
@@ -109,7 +109,7 @@ const MainNavigation = () => {
               />
           ) : (
               <BiMenuAltRight
-                  className="text-[20px] "
+                  className="text-[20px] z-10"
                   onClick={() => setMobileMenu(true)}
               />
           )}

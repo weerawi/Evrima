@@ -22,37 +22,37 @@ function App() {
   //  /////////////         use for reterieve link data result /////////////////////////
 
 
-  // const url = "http://localhost:5000/app";
+  const url = "http://localhost:5000/app";
 
 
-  // const fetchSearchResults = useCallback(async () => {
-  //   if (searchInput.length === 0) {
-  //     setSearchResults([]);
-  //     return;
-  //   }
+  const fetchSearchResults = useCallback(async () => {
+    if (searchInput.length === 0) {
+      setSearchResults([]);
+      return;
+    }
 
-  //   setIsLoading(true);
-  //   setError(null);
+    setIsLoading(true);
+    setError(null);
 
-  //   try {
-  //     const response = await axios.get(
-  //       `${url}?search=${searchInput}`
-  //     );
+    try {
+      const response = await axios.get(
+        `${url}?search=${searchInput}`
+      );
       
-  //     console.log(response.data)
-  //     setSearchResults(response.data);
-  //     if (response.status !== 200) {
-  //       throw new Error('Something went wrong!');
-  //     }
+      console.log(response.data)
+      setSearchResults(response.data);
+      if (response.status !== 200) {
+        throw new Error('Something went wrong!');
+      }
       
-  //   } catch (error) {
+    } catch (error) {
       
-  //     console.error('Error fetching search results:', error);
-  //     setError(error.message);
-  //   }
+      console.error('Error fetching search results:', error);
+      setError(error.message);
+    }
 
-  //   setIsLoading(false);
-  // } );
+    setIsLoading(false);
+  } );
 
 
   // /////////////////////////////////////////////////////////////////////////////////////
