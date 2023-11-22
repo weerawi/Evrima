@@ -58,23 +58,23 @@ function App() {
   // /////////////////////////////////////////////////////////////////////////////////////
 
 
-  const fetchSearchResults = useCallback(async () => {
-    if (searchInput.length === 0) {
-      setSearchResults([]);
-      return;
-    }
+  // const fetchSearchResults = useCallback(async () => {
+  //   if (searchInput.length === 0) {
+  //     setSearchResults([]);
+  //     return;
+  //   }
   
-    setIsLoading(true);
+  //   setIsLoading(true);
   
-    try {
-      // Replace the axios call with the staticData import
-      setSearchResults(staticData);
-    } catch (error) {
-      console.error('Error fetching search results:', error);
-    }
+  //   try {
+  //     // Replace the axios call with the staticData import
+  //     setSearchResults(staticData);
+  //   } catch (error) {
+  //     console.error('Error fetching search results:', error);
+  //   }
   
-    setIsLoading(false);
-  }, [searchInput]);
+  //   setIsLoading(false);
+  // }, [searchInput]);
 
 
 
