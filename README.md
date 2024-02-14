@@ -58,10 +58,10 @@ User interface design:
 ![image](https://github.com/weerawi/Evrima/assets/108020013/5ce1504b-429b-4f9f-a2ce-ea68bc92834a)
 
 
-![image](https://github.com/weerawi/Evrima/assets/108020013/e575e97b-f1e4-49e3-86a8-98f6db0c2abf)
+![image](https://github.com/weerawi/Evrima/assets/108020013/779c2d5f-ae21-4ac3-86a2-90cfa3abc522)
 
 
-![image](https://github.com/weerawi/Evrima/assets/108020013/fdc74232-14be-454f-b041-13b0dc888836)
+![image](https://github.com/weerawi/Evrima/assets/108020013/0e53d5cb-6de4-41f0-9a0b-e064e0178def)
 
 
 ![image](https://github.com/weerawi/Evrima/assets/108020013/5d6b09c6-3d5b-41f5-98e2-d4fd0b7c1074)
